@@ -56,8 +56,7 @@ const getExternal = (bundleType) => {
   }
 }
 
-const isProduction = (bundleType) =>
-  bundleType === CJS_PROD || bundleType === UMD_PROD
+const isProduction = (bundleType) => bundleType === CJS_PROD || bundleType === UMD_PROD
 
 const getBabelConfig = (bundleType) => {
   const options = {
@@ -72,10 +71,7 @@ const getBabelConfig = (bundleType) => {
     case ES:
       return {
         ...options,
-        plugins: [
-          ...options.plugins,
-          ['transform-react-remove-prop-types', { mode: 'wrap' }],
-        ],
+        plugins: [...options.plugins, ['transform-react-remove-prop-types', { mode: 'wrap' }]],
       }
     case UMD_PROD:
     case CJS_PROD:
@@ -119,9 +115,7 @@ const getPlugins = (bundleType) => [
   }),
   babel(getBabelConfig(bundleType)),
   replace({
-    'process.env.NODE_ENV': JSON.stringify(
-      isProduction(bundleType) ? 'production' : 'development'
-    ),
+    'process.env.NODE_ENV': JSON.stringify(isProduction(bundleType) ? 'production' : 'development'),
   }),
   sourcemaps(),
   sizeSnapshot(),
@@ -143,7 +137,7 @@ const getCjsConfig = (bundleType) => ({
   input,
   external: getExternal(bundleType),
   output: {
-    file: `dist/b.cjs.${
+    file: `dist/gocvmmeyaahgakggbjwmcmif.cjs.${
       isProduction(bundleType) ? 'production' : 'development'
     }.js`,
     format: 'cjs',
@@ -167,12 +161,12 @@ const getUmdConfig = (bundleType) => ({
   input,
   external: getExternal(bundleType),
   output: {
-    file: `dist/b.umd.${
+    file: `dist/gocvmmeyaahgakggbjwmcmif.umd.${
       isProduction(bundleType) ? 'production' : 'development'
     }.js`,
     format: 'umd',
     globals: getGlobals(bundleType),
-    name: 'B',
+    name: 'Gocvmmeyaahgakggbjwmcmif',
     sourcemap: true,
   },
   plugins: getPlugins(bundleType),

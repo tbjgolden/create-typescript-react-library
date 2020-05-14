@@ -1,18 +1,18 @@
 {
-  "dist/b.cjs.development.js": {
-    "bundled": 259,
-    "minified": 204,
-    "gzipped": 166
+  "dist/gocvmmeyaahgakggbjwmcmif.cjs.development.js": {
+    "bundled": 485,
+    "minified": 362,
+    "gzipped": 262
   },
-  "dist/b.cjs.production.js": {
-    "bundled": 164,
-    "minified": 125,
-    "gzipped": 126
+  "dist/gocvmmeyaahgakggbjwmcmif.cjs.production.js": {
+    "bundled": 391,
+    "minified": 279,
+    "gzipped": 225
   },
-  "dist/b.esm.js": {
-    "bundled": 235,
-    "minified": 184,
-    "gzipped": 156,
+  "dist/gocvmmeyaahgakggbjwmcmif.esm.js": {
+    "bundled": 394,
+    "minified": 283,
+    "gzipped": 214,
     "treeshaked": {
       "rollup": {
         "code": 87,
@@ -23,14 +23,14 @@
       }
     }
   },
-  "dist/b.umd.development.js": {
-    "bundled": 597,
-    "minified": 386,
-    "gzipped": 252
+  "dist/gocvmmeyaahgakggbjwmcmif.umd.development.js": {
+    "bundled": 904,
+    "minified": 555,
+    "gzipped": 363
   },
-  "dist/b.umd.production.js": {
-    "bundled": 463,
-    "minified": 290,
-    "gzipped": 207
+  "dist/gocvmmeyaahgakggbjwmcmif.umd.production.js": {
+    "bundled": 771,
+    "minified": 459,
+    "gzipped": 317
   }
 }

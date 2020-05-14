@@ -1,10 +1,10 @@
 {
-  "name": "b",
+  "name": "gocvmmeyaahgakggbjwmcmif",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
-  "module": "dist/b.esm.js",
-  "jsnext:main": "dist/b.esm.js",
+  "module": "dist/gocvmmeyaahgakggbjwmcmif.esm.js",
+  "jsnext:main": "dist/gocvmmeyaahgakggbjwmcmif.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -33,19 +33,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "github:hatched-tom/b"
+    "url": "github:xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif"
   },
   "keywords": [
     "javascript",
     "react",
     "typescript"
   ],
-  "author": "Tom Golden <tom@hatchedlabs.com>",
+  "author": "zkhshfmpcvllotfgoigdwyrr <fnrnhzcpnugohyrqjsyolejv>",
   "license": "MIT",
   "bugs": {
-    "url": "github:hatched-tom/b/issues"
+    "url": "github:xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif/issues"
   },
-  "homepage": "github:hatched-tom/b",
+  "homepage": "github:xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif",
   "peerDependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0"

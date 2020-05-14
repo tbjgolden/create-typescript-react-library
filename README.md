@@ -1,11 +1,9 @@
-# b
+# `gocvmmeyaahgakggbjwmcmif`
 
-[![npm version][npmv-image]][npmv-url]
-[![build status][travis-image]][travis-url]
-[![coverage status][codecov-image]][codecov-url]
-[![npm downloads][npmd-image]][npmd-url]
+[![npm version][npmv-image]][npmv-url] [![npm downloads][npmd-image]][npmd-url]
+coveralls
 
-> 
+>
 
 ## Basic Usage
 
@@ -38,13 +36,13 @@ render(, document.getElementById('root'))
 ## Installation
 
 ```
-$ npm install b --save
+$ npm install gocvmmeyaahgakggbjwmcmif --save
 ```
 
 There are also UMD builds available via [unpkg](https://unpkg.com/):
 
-- https://unpkg.com/b/dist/b.umd.development.js
-- https://unpkg.com/b/dist/b.umd.production.js
+- https://unpkg.com/gocvmmeyaahgakggbjwmcmif/dist/gocvmmeyaahgakggbjwmcmif.umd.development.js
+- https://unpkg.com/gocvmmeyaahgakggbjwmcmif/dist/gocvmmeyaahgakggbjwmcmif.umd.production.js
 
 For the non-minified development version, make sure you have already included:
 
@@ -61,11 +59,12 @@ For the minified production version, make sure you have already included:
 
 MIT
 
-[travis-image]: https://img.shields.io/travis/hatched-tom/b/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/hatched-tom/b
-[codecov-image]: https://img.shields.io/codecov/c/github/hatched-tom/b.svg?style=flat-square
-[codecov-url]: https://codecov.io/gh/hatched-tom/b
-[npmv-image]: https://img.shields.io/npm/v/b.svg?style=flat-square
-[npmv-url]: https://www.npmjs.com/package/b
-[npmd-image]: https://img.shields.io/npm/dm/b.svg?style=flat-square
-[npmd-url]: https://www.npmjs.com/package/b
+[npmv-image]:
+  https://img.shields.io/npm/v/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square
+[npmv-url]: https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif
+[npmd-image]:
+  https://img.shields.io/npm/dm/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square
+[npmd-url]: https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif
+[npmd-image]:
+  https://img.shields.io/npm/dm/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square
+[npmd-url]: https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif
