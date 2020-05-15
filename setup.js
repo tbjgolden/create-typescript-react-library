@@ -143,6 +143,16 @@ if (aliases) {
     console.log('...removing the setup script file...')
     fs.unlinkSync(path.join(__dirname, 'setup.js'))
 
+    console.log('...swapping readmes...')
+    fs.renameSync(
+      path.join(__dirname, 'README.md'),
+      path.join(__dirname, 'STARTER_README.md')
+    )
+    fs.renameSync(
+      path.join(__dirname, 'LIBRARY_README.md'),
+      path.join(__dirname, 'README.md')
+    )
+
     console.log('done!')
   })
 } else {

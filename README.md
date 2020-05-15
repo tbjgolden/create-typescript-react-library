@@ -1,70 +1,79 @@
-# `gocvmmeyaahgakggbjwmcmif`
+# `typescript-library-starter`
 
-[![npm version][npmv-image]][npmv-url] [![npm downloads][npmd-image]][npmd-url]
-coveralls
+Derived from `alexjoverm/typescript-library-starter` and
+`tanem/generator-typescript-react-lib`.
 
->
+This library is oriented around giving a low maintenance option for open source
+creators of JS (and React!) libraries written with TypeScript.
 
-## Basic Usage
+## What's included?
 
-```jsx
-import React from 'react'
-import { render } from 'react-dom'
+- Toolchain for creating libraries written in TypeScript
 
-render(, document.getElementById('root'))
+from `tanem/generator-typescript-react-lib`:
+
+- Generates CommonJS, ES module, and Universal Module Definition bundles via
+  Rollup.
+- Tests bundles via Jest.
+- Generates Typescript type declarations for publishing.
+- Outputs, strips, or wraps PropTypes declarations according to bundle type.
+- Configures Renovate for dependency management.
+- Adds scripts for releasing to npm.
+- Makes Universal Module Definition bundles available via unpkg.
+
+from `alexjoverm/typescript-library-starter`
+
+- code of conduct
+- contributing boilerplate
+- semantic releases
+- github pages docs
+
+from me
+
+- github actions setup
+- dotenv stuff
+- https://github.com/kentcdodds/all-contributors
+
+### Alternatives
+
+If you're managing 3+ repos, Kent C. Dodds' setup (or a fork of) is likely a
+better choice: https://github.com/kentcdodds/kcd-scripts
+
+### Gotchas
+
+- No Windows support
+- Expects `yarn` instead of `npm`
+
+## Setup
+
+```sh
+# Clone
+git clone https://github.com/tbjgolden/typescript-library-starter.git <directory>
+
+# Install dependencies and run setup
+cd <directory>
+yarn # This will ask you some questions to give you a tailored boilerplate
+# if you skip some questions (i.e. SIGTERM), you can still run `node setup.js`
+
+# Install example dependencies
+cd examples/basic-usage
+yarn
+
+# test it's working with:
+yarn test # this builds everything, then tests the bundles
 ```
 
-## Live Examples
-
-- [Basic Usage](https://codesandbox.io/)
-- [API Example](https://codesandbox.io/)
-- [UMD Build (Development)](https://codesandbox.io/)
-- [UMD Build (Production)](https://codesandbox.io/)
-
-## API
-
-**Props**
-
-- `foo` - Something something.
-- `bar` - _Optional_ Something something. Defaults to `null`.
-
-**Example**
-
-```jsx
-```
-
-## Installation
+## Main scripts
 
 ```
-$ npm install gocvmmeyaahgakggbjwmcmif --save
+yarn start
+
+if (src contains .tsx file) {
+  // get react live reload working somehow
+  // potential solutions: yarn link, --check-files, react storybook
+} else {
+  // get tdd running somehow
+  // maybe enhance test suite with some clever automatic mocks
+  // performance testing
+}
 ```
-
-There are also UMD builds available via [unpkg](https://unpkg.com/):
-
-- https://unpkg.com/gocvmmeyaahgakggbjwmcmif/dist/gocvmmeyaahgakggbjwmcmif.umd.development.js
-- https://unpkg.com/gocvmmeyaahgakggbjwmcmif/dist/gocvmmeyaahgakggbjwmcmif.umd.production.js
-
-For the non-minified development version, make sure you have already included:
-
-- [`React`](https://unpkg.com/react/umd/react.development.js)
-- [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.development.js)
-- [`PropTypes`](https://unpkg.com/prop-types/prop-types.js)
-
-For the minified production version, make sure you have already included:
-
-- [`React`](https://unpkg.com/react/umd/react.production.min.js)
-- [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.production.min.js)
-
-## License
-
-MIT
-
-[npmv-image]:
-  https://img.shields.io/npm/v/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square
-[npmv-url]: https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif
-[npmd-image]:
-  https://img.shields.io/npm/dm/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square
-[npmd-url]: https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif
-[npmd-image]:
-  https://img.shields.io/npm/dm/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square
-[npmd-url]: https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif
