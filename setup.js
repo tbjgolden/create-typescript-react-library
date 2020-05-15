@@ -98,7 +98,7 @@ if (aliases) {
   }
 
   let files = []
-  console.log('building up source file list...')
+  console.log('...building up source file list...')
   walkSync(__dirname, (filepath, stats) => {
     if (stats.size < 50000) {
       files.push(filepath)
@@ -111,14 +111,14 @@ if (aliases) {
   const keys = Object.keys(aliases)
   askAll(
     keys.map((alias) => ({
-      question: `${alias}${
+      question: `==============================\n${alias}${
         alias.slice(0, 7) === 'Author ' ? '' : ' (required)'
       }${descriptions[alias] ? `\n${descriptions[alias]}` : ''}\n? `,
       regex: regexes[alias]
     }))
   ).then((results) => {
     results.forEach((result, i) => {
-      replacers.push([aliases[keys[i]], result])
+      replacers.push([aliases[keys[i]], result.trim()])
     })
 
     const regex = replacers.map(([alias]) => `(${alias})`).join('|')
@@ -128,7 +128,8 @@ if (aliases) {
     }, {})
     const replacer = (match) => replacements[match]
 
-    console.log('replacing the aliases in the files...')
+    console.log('==============================')
+    console.log('...replacing the aliases in the files...')
     files.forEach((file, i) => {
       fs.writeFileSync(
         file,
@@ -136,12 +137,14 @@ if (aliases) {
       )
     })
 
-    console.log('removing the alias file...')
+    console.log('...removing the alias file...')
     fs.unlinkSync(path.join(__dirname, '.aliases.json'))
 
-    console.log('removing the setup script file...')
+    console.log('...removing the setup script file...')
     fs.unlinkSync(path.join(__dirname, 'setup.js'))
 
     console.log('done!')
   })
+} else {
+  console.log('looks like the setup script has already been run')
 }
