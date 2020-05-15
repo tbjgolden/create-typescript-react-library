@@ -78,7 +78,8 @@ if (aliases) {
     'compiled',
     'coverage',
     'dist',
-    'node_modules'
+    'node_modules',
+    '.git'
   ])
 
   const walkSync = (dir, callback) => {
@@ -118,7 +119,17 @@ if (aliases) {
     results.forEach((result, i) => {
       replacers.push([aliases[keys[i]], result])
     })
-    console.log(replacers)
+
+    const regex = replacers.map(([alias]) => `(${alias})`).join('|')
+    const replacements = replacers.reduce((o, [alias, replacement]) => {
+      o[alias] = replacement
+      return o
+    }, {})
+    const replacer = (match) => replacements[match]
+
+    files.forEach((file, i) => {
+      fs.writeFileSync(file, fs.readFileSync(file, 'utf8'))
+    })
 
     // replace the files
     // remove .aliases.json
