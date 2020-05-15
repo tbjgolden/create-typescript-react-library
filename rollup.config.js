@@ -18,7 +18,7 @@ const input = './compiled/index.js'
 const getGlobals = (bundleType) => {
   const baseGlobals = {
     'react-dom': 'ReactDOM',
-    react: 'React',
+    'react': 'React'
   }
 
   switch (bundleType) {
@@ -56,7 +56,8 @@ const getExternal = (bundleType) => {
   }
 }
 
-const isProduction = (bundleType) => bundleType === CJS_PROD || bundleType === UMD_PROD
+const isProduction = (bundleType) =>
+  bundleType === CJS_PROD || bundleType === UMD_PROD
 
 const getBabelConfig = (bundleType) => {
   const options = {
@@ -64,14 +65,17 @@ const getBabelConfig = (bundleType) => {
     exclude: 'node_modules/**',
     presets: [['@babel/env', { loose: true, modules: false }], '@babel/react'],
     plugins: ['@babel/transform-runtime'],
-    runtimeHelpers: true,
+    runtimeHelpers: true
   }
 
   switch (bundleType) {
     case ES:
       return {
         ...options,
-        plugins: [...options.plugins, ['transform-react-remove-prop-types', { mode: 'wrap' }]],
+        plugins: [
+          ...options.plugins,
+          ['transform-react-remove-prop-types', { mode: 'wrap' }]
+        ]
       }
     case UMD_PROD:
     case CJS_PROD:
@@ -79,8 +83,8 @@ const getBabelConfig = (bundleType) => {
         ...options,
         plugins: [
           ...options.plugins,
-          ['transform-react-remove-prop-types', { removeImport: true }],
-        ],
+          ['transform-react-remove-prop-types', { removeImport: true }]
+        ]
       }
     default:
       return options
@@ -109,13 +113,15 @@ const getPlugins = (bundleType) => [
         'oneOfType',
         'shape',
         'string',
-        'symbol',
-      ],
-    },
+        'symbol'
+      ]
+    }
   }),
   babel(getBabelConfig(bundleType)),
   replace({
-    'process.env.NODE_ENV': JSON.stringify(isProduction(bundleType) ? 'production' : 'development'),
+    'process.env.NODE_ENV': JSON.stringify(
+      isProduction(bundleType) ? 'production' : 'development'
+    )
   }),
   sourcemaps(),
   sizeSnapshot(),
@@ -125,12 +131,12 @@ const getPlugins = (bundleType) => [
       output: { comments: false },
       compress: {
         keep_infinity: true, // eslint-disable-line @typescript-eslint/camelcase
-        pure_getters: true, // eslint-disable-line @typescript-eslint/camelcase
+        pure_getters: true // eslint-disable-line @typescript-eslint/camelcase
       },
       warnings: true,
       ecma: 5,
-      toplevel: false,
-    }),
+      toplevel: false
+    })
 ]
 
 const getCjsConfig = (bundleType) => ({
@@ -141,9 +147,9 @@ const getCjsConfig = (bundleType) => ({
       isProduction(bundleType) ? 'production' : 'development'
     }.js`,
     format: 'cjs',
-    sourcemap: true,
+    sourcemap: true
   },
-  plugins: getPlugins(bundleType),
+  plugins: getPlugins(bundleType)
 })
 
 const getEsConfig = () => ({
@@ -152,9 +158,9 @@ const getEsConfig = () => ({
   output: {
     file: pkg.module,
     format: 'es',
-    sourcemap: true,
+    sourcemap: true
   },
-  plugins: getPlugins(ES),
+  plugins: getPlugins(ES)
 })
 
 const getUmdConfig = (bundleType) => ({
@@ -167,9 +173,9 @@ const getUmdConfig = (bundleType) => ({
     format: 'umd',
     globals: getGlobals(bundleType),
     name: 'Gocvmmeyaahgakggbjwmcmif',
-    sourcemap: true,
+    sourcemap: true
   },
-  plugins: getPlugins(bundleType),
+  plugins: getPlugins(bundleType)
 })
 
 export default [
@@ -177,5 +183,5 @@ export default [
   getCjsConfig(CJS_PROD),
   getEsConfig(),
   getUmdConfig(UMD_DEV),
-  getUmdConfig(UMD_PROD),
+  getUmdConfig(UMD_PROD)
 ]
