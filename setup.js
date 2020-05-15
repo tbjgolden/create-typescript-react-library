@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-// find files from eslint ignore
+// this script is zero dependencies
+// it can be run directly with `node setup.js`
 
 const fs = require('fs')
 const path = require('path')
@@ -98,7 +99,6 @@ if (aliases) {
   }
 
   let files = []
-  console.log('...building up source file list...')
   walkSync(__dirname, (filepath, stats) => {
     if (stats.size < 50000) {
       files.push(filepath)
