@@ -127,12 +127,18 @@ if (aliases) {
     }, {})
     const replacer = (match) => replacements[match]
 
+    // replace the aliases in the files
     files.forEach((file, i) => {
-      fs.writeFileSync(file, fs.readFileSync(file, 'utf8'))
+      fs.writeFileSync(
+        file,
+        fs.readFileSync(file, 'utf8').replace(new RegExp(regex, 'g'), replacer)
+      )
     })
 
-    // replace the files
     // remove .aliases.json
+    fs.unlinkSync(path.join(__dirname, '.aliases.json'))
+
     // remove setup.js
+    fs.unlinkSync(path.join(__dirname, 'setup.js'))
   })
 }
