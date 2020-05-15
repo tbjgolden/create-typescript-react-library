@@ -98,6 +98,7 @@ if (aliases) {
   }
 
   let files = []
+  console.log('building up source file list...')
   walkSync(__dirname, (filepath, stats) => {
     if (stats.size < 50000) {
       files.push(filepath)
@@ -127,7 +128,7 @@ if (aliases) {
     }, {})
     const replacer = (match) => replacements[match]
 
-    // replace the aliases in the files
+    console.log('replacing the aliases in the files...')
     files.forEach((file, i) => {
       fs.writeFileSync(
         file,
@@ -135,10 +136,12 @@ if (aliases) {
       )
     })
 
-    // remove .aliases.json
+    console.log('removing the alias file...')
     fs.unlinkSync(path.join(__dirname, '.aliases.json'))
 
-    // remove setup.js
+    console.log('removing the setup script file...')
     fs.unlinkSync(path.join(__dirname, 'setup.js'))
+
+    console.log('done!')
   })
 }
