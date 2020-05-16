@@ -68,6 +68,8 @@ yarn test # this builds everything, then tests the bundles
 ```
 yarn start
 
+do we need to choose? ⬇
+
 if (src contains .tsx file) {
   // get react live reload working somehow
   // potential solutions: yarn link, --check-files, react storybook

@@ -143,6 +143,11 @@ if (aliases) {
     console.log('...removing the setup script file...')
     fs.unlinkSync(path.join(__dirname, 'setup.js'))
 
+    console.log('...removing setup step from package.json...')
+    const pkgJson = JSON.parse(fs.readFileSync(file, 'utf8'))
+    delete pkgJson.scripts.postinstall
+    fs.writeFileSync(file, JSON.stringify(pkgJson, null, 2))
+
     console.log('...swapping readmes...')
     fs.renameSync(
       path.join(__dirname, 'README.md'),
