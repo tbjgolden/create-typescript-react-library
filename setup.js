@@ -144,7 +144,7 @@ if (aliases) {
     fs.unlinkSync(path.join(__dirname, 'setup.js'))
 
     console.log('...removing setup step from package.json...')
-    const pkgJson = JSON.parse(fs.readFileSync(file, 'utf8'))
+    const pkgJson = require('./package.json')
     delete pkgJson.scripts.postinstall
     fs.writeFileSync(file, JSON.stringify(pkgJson, null, 2))
 
