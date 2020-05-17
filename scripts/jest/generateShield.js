@@ -65,7 +65,7 @@ if (
   fs.existsSync(path.join(__dirname, '../../coverage/coverage-summary.json'))
 ) {
   fs.writeFileSync(
-    path.join(__dirname, './coverage.svg'),
+    path.join(__dirname, './shield.svg'),
     generateSVG(calcPercentage())
   )
 }
