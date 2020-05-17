@@ -28,7 +28,7 @@
     "preinstall": "node setup.js",
     "postbundle": "del compiled && cp-cli ./index.js ./dist/index.js",
     "release": "tanem-scripts release",
-    "test": "run-s check:* lint build test:*",
+    "test": "run-s check:* lint build test:* && node scripts/jest/generateShield.js",
     "test:cjs": "jest --config ./scripts/jest/config.cjs.js",
     "test:cjsprod": "cross-env NODE_ENV=production jest --config ./scripts/jest/config.cjs.js",
     "test:es": "jest --config ./scripts/jest/config.es.js",

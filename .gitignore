@@ -4,12 +4,12 @@
 node_modules
 
 # Generated files
-dist
-docs
-.docusaurus
+/dist
+/docs
+/.docusaurus
 .cache-loader
-coverage
-compiled
+/coverage
+/compiled
 
 # Misc
 .DS_Store

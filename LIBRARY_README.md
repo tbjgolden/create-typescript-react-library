@@ -1,7 +1,8 @@
 # `gocvmmeyaahgakggbjwmcmif`
 
-[![npm version][npmv-image]][npmv-url] [![npm downloads][npmd-image]][npmd-url]
-coveralls
+[![npm version][https://img.shields.io/npm/v/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square]][https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif]
+[![npm downloads][https://img.shields.io/npm/dm/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square]][https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif]
+![coverage][/scripts/jest/shield.svg]
 
 >
 
@@ -58,13 +59,3 @@ For the minified production version, make sure you have already included:
 ## License
 
 MIT
-
-[npmv-image]:
-  https://img.shields.io/npm/v/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square
-[npmv-url]: https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif
-[npmd-image]:
-  https://img.shields.io/npm/dm/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square
-[npmd-url]: https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif
-[npmd-image]:
-  https://img.shields.io/npm/dm/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square
-[npmd-url]: https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif
