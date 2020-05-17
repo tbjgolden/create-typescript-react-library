@@ -10,7 +10,9 @@
     "dist"
   ],
   "scripts": {
+    "start:site": "docusaurus start",
     "build": "run-s clean compile bundle",
+    "build:site": "docusaurus build",
     "bundle": "rollup -c",
     "check:format": "prettier --list-different \"**/*.{js,ts,tsx}\"",
     "check:types": "tsc --noEmit",
@@ -19,6 +21,7 @@
     "clean:coverage": "del coverage",
     "clean:dist": "del dist",
     "compile": "tsc -p tsconfig.base.json",
+    "deploy:site": "docusaurus deploy",
     "docs": "typedoc --mode file --out dox --theme minimal src/index.tsx",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "eslint . --ext .ts,.tsx",
@@ -99,6 +102,16 @@
     "tanem-scripts": "5.0.22",
     "ts-jest": "25.5.1",
     "typedoc": "^0.17.6",
-    "typescript": "3.8.3"
-  }
+    "typescript": "3.8.3",
+    "@docusaurus/core": "^2.0.0-alpha.54",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.54",
+    "classnames": "^2.2.6"
+  },
+  "browserslist": [
+    "last 3 chrome versions and last 1 year",
+    "last 2 and_chr versions",
+    "last 2 safari versions and last 1 year",
+    "last 4 ios_saf versions and last 2 years",
+    "last 3 firefox versions"
+  ]
 }
