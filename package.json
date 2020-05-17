@@ -22,7 +22,7 @@
     "clean:dist": "del dist",
     "compile": "tsc -p tsconfig.base.json",
     "deploy:site": "docusaurus deploy",
-    "docs": "typedoc --mode file --out dox --theme minimal src/index.tsx",
+    "docs": "typedoc --mode file --out static/api --theme minimal --readme none src/index.tsx",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "eslint . --ext .ts,.tsx",
     "preinstall": "node setup.js",

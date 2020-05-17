@@ -31,8 +31,8 @@ from `alexjoverm/typescript-library-starter`
 
 from me
 
-- docusaurus website
-- typedoc generated api docs
+- interactive setup script which asks the basics to help get you up and running
+- docusaurus website integrated with typedoc generated api docs
 - github actions setup
 - dotenv stuff
 - https://github.com/kentcdodds/all-contributors

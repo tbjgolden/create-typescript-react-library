@@ -5,11 +5,11 @@ node_modules
 
 # Generated files
 /dist
-/docs
-/.docusaurus
-.cache-loader
 /coverage
 /compiled
+/.docusaurus
+/static/api
+.cache-loader
 
 # Misc
 .DS_Store
