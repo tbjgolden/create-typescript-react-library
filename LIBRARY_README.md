@@ -1,8 +1,8 @@
 # `gocvmmeyaahgakggbjwmcmif`
 
-[![npm version][https://img.shields.io/npm/v/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square]][https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif]
-[![npm downloads][https://img.shields.io/npm/dm/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square]][https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif]
-![coverage][/scripts/jest/shield.svg]
+[![npm version](https://img.shields.io/npm/v/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
+[![npm downloads](https://img.shields.io/npm/dm/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
+![coverage](/scripts/jest/shield.svg)
 
 >
 
