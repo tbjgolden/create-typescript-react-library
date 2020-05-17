@@ -145,7 +145,7 @@ if (aliases) {
 
     console.log('...removing setup step from package.json...')
     const pkgJson = require('./package.json')
-    delete pkgJson.scripts.postinstall
+    delete pkgJson.scripts.preinstall
     fs.writeFileSync(
       path.join(__dirname, 'package.json'),
       JSON.stringify(pkgJson, null, 2)

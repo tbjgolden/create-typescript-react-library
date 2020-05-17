@@ -1,5 +1,7 @@
 # `typescript-library-starter`
 
+> rwmgkcxafpdrkuvtfszrfvwv
+
 Derived from `alexjoverm/typescript-library-starter` and
 `tanem/generator-typescript-react-lib`.
 
@@ -23,13 +25,14 @@ from `tanem/generator-typescript-react-lib`:
 
 from `alexjoverm/typescript-library-starter`
 
-- code of conduct
-- contributing boilerplate
-- semantic releases
-- github pages docs
+- Code of conduct
+- Contributing boilerplate
+- Semantic releases
 
 from me
 
+- docusaurus website
+- typedoc generated api docs
 - github actions setup
 - dotenv stuff
 - https://github.com/kentcdodds/all-contributors
@@ -63,7 +66,8 @@ yarn
 yarn test # this builds everything, then tests the bundles
 ```
 
-## Main scripts
+<!--
+## Main Scripts
 
 ```
 yarn start
@@ -79,3 +83,36 @@ if (src contains .tsx file) {
   // performance testing
 }
 ```
+-->
+
+# Project Website
+
+The website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern
+static website generator.
+
+### Local Development
+
+```
+$ yarn start:site
+```
+
+This command starts a local development server and open up a browser window.
+Most changes are reflected live without having to restart the server.
+
+### Build
+
+```
+$ yarn build:site
+```
+
+This command generates static content into the `build` directory and can be
+served using any static contents hosting service.
+
+### Deployment
+
+```
+$ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy:site
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to
+build the website and push to the `gh-pages` branch.
