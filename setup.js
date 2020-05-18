@@ -42,7 +42,7 @@ const start = () => {
 const ask = (question, regex) =>
   new Promise((resolve) => {
     ref.rl.question(question, (name) => {
-      if (regex.test(name)) {
+      if (!regex || regex.test(name)) {
         resolve(name)
       } else {
         ask(question, regex).then((name) => resolve(name))
