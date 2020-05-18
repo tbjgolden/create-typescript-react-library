@@ -18,7 +18,7 @@ const descriptions = {
 }
 
 const regexes = {
-  'Repo Name': /^[a-z0-9]+(-[a-z0-9]_)*$/,
+  'Repo Name': /^[a-z0-9]+(-[a-z0-9]+)*$/,
   'Variable': /^[a-zA-Z][a-zA-Z0-9]*$/,
   'Github Username': /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i,
   'Author Name': /^[^"]*$/,
