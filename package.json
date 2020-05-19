@@ -10,9 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "start:site": "docusaurus start",
     "build": "run-s clean compile bundle",
-    "build:site": "docusaurus build",
     "bundle": "rollup -c",
     "check:format": "prettier --list-different \"**/*.{js,ts,tsx}\"",
     "check:types": "tsc --noEmit",
@@ -21,13 +19,10 @@
     "clean:coverage": "del coverage",
     "clean:dist": "del dist",
     "compile": "tsc -p tsconfig.base.json",
-    "deploy:site": "docusaurus deploy",
-    "docs": "typedoc --mode file --out static/api --theme minimal --readme none src/index.tsx",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "eslint . --ext .ts,.tsx",
     "preinstall": "node setup.js",
     "postbundle": "del compiled && cp-cli ./index.js ./dist/index.js",
-    "release": "",
     "test": "run-s check:* lint build test:* && node scripts/jest/generateShield.js",
     "test:cjs": "jest --config ./scripts/jest/config.cjs.js",
     "test:cjsprod": "cross-env NODE_ENV=production jest --config ./scripts/jest/config.cjs.js",
@@ -64,8 +59,6 @@
     "@babel/plugin-transform-runtime": "7.9.6",
     "@babel/preset-env": "7.9.6",
     "@babel/preset-react": "7.9.4",
-    "@docusaurus/core": "^2.0.0-alpha.54",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.54",
     "@testing-library/jest-dom": "^5.7.0",
     "@testing-library/react": "^10.0.4",
     "@types/enzyme": "3.10.5",
@@ -105,14 +98,6 @@
     "rollup-plugin-terser": "5.3.0",
     "semantic-release": "^17.0.7",
     "ts-jest": "25.5.1",
-    "typedoc": "^0.17.6",
     "typescript": "3.8.3"
-  },
-  "browserslist": [
-    "last 3 chrome versions and last 1 year",
-    "last 2 and_chr versions",
-    "last 2 safari versions and last 1 year",
-    "last 4 ios_saf versions and last 2 years",
-    "last 3 firefox versions"
-  ]
+  }
 }

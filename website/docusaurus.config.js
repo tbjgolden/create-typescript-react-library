@@ -1,8 +1,10 @@
+const baseUrl = '/gocvmmeyaahgakggbjwmcmif/'
+
 module.exports = {
   title: 'gocvmmeyaahgakggbjwmcmif',
   tagline: 'rwmgkcxafpdrkuvtfszrfvwv',
   url: 'https://xrdnwftmsmirdshgpfoyocjh.github.io',
-  baseUrl: '/gocvmmeyaahgakggbjwmcmif/',
+  baseUrl,
   favicon: 'img/favicon.ico',
   organizationName: 'xrdnwftmsmirdshgpfoyocjh',
   projectName: 'gocvmmeyaahgakggbjwmcmif',
@@ -20,7 +22,7 @@ module.exports = {
           label: 'Docs',
           position: 'left'
         },
-        { href: 'api', label: 'API', position: 'left' },
+        { href: `${baseUrl}api`, label: 'API', position: 'left' },
         { to: 'blog', label: 'Blog', position: 'left' },
         {
           href:
@@ -89,7 +91,7 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          sidebarPath: require.resolve('./scripts/docs/sidebar'),
+          sidebarPath: require.resolve('./sidebar'),
           editUrl:
             'https://github.com/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif/edit/master/website/'
         },

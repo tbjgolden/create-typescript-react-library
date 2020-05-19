@@ -27,8 +27,8 @@ from `alexjoverm/typescript-library-starter`
 
 - [x] Code of conduct
 - [x] Contributing boilerplate
+- [x] Version control asdf
 - [ ] Semantic releases
-- [ ] Version controlled node and yarn through asdf
 
 from me
 

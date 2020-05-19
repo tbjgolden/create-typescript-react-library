@@ -7,8 +7,9 @@ node_modules
 /dist
 /coverage
 /compiled
-/.docusaurus
-/static/api
+/website/.docusaurus
+/website/static/api
+/website/build
 .cache-loader
 .size-snapshot.json
 
