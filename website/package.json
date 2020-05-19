@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "start": "docusaurus start",
-    "docs": "typedoc --tsconfig ../tsconfig.json --mode file --out static/api --theme minimal --readme none ../src/index.tsx",
     "build": "yarn docs && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy"
@@ -22,9 +21,5 @@
     "last 2 safari versions and last 1 year",
     "last 4 ios_saf versions and last 2 years",
     "last 3 firefox versions"
-  ],
-  "devDependencies": {
-    "typedoc": "^0.17.7",
-    "typescript": "^3.9.2"
-  }
+  ]
 }

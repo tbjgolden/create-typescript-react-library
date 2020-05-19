@@ -7,13 +7,11 @@ on:
     paths:
       - '.github/workflows/site.yml'
       - 'website/**'
+      - 'src/**'
 
 jobs:
   site:
     runs-on: ubuntu-18.04
-    defaults:
-      run:
-        working-directory: website
     steps:
       - uses: actions/checkout@v2
 
@@ -22,6 +20,9 @@ jobs:
         with:
           node-version: '12.x'
 
+      - run: yarn install --frozen-lockfile
+      - run: yarn typedoc
+      - run: cd website
       - run: yarn install --frozen-lockfile
       - run: yarn build
 
