@@ -21,10 +21,14 @@ jobs:
           node-version: '12.x'
 
       - run: yarn install --frozen-lockfile
+
       - run: yarn typedoc
-      - run: cd website
+
       - run: yarn install --frozen-lockfile
+        working-directory: website
+
       - run: yarn build
+        working-directory: website
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
