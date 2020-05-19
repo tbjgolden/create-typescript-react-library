@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "docusaurus start",
-    "docs": "typedoc--tsconfig ../tsconfig.json --mode file --out static/api --theme minimal --readme none ../src/index.tsx",
+    "docs": "typedoc --tsconfig ../tsconfig.json --mode file --out static/api --theme minimal --readme none ../src/index.tsx",
     "build": "yarn docs && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy"
