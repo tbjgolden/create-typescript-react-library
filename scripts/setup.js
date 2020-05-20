@@ -7,6 +7,8 @@ const fs = require('fs')
 const path = require('path')
 const readline = require('readline')
 
+const projectRoot = path.join(__dirname, '..')
+
 const descriptions = {
   'Repo Name':
     'The name of both your repository and the associated npm package',
@@ -76,6 +78,7 @@ try {
 if (aliases) {
   const blacklist = new Set([
     '.aliases.json',
+    'build',
     'compiled',
     'coverage',
     'dist',
@@ -99,7 +102,7 @@ if (aliases) {
   }
 
   let files = []
-  walkSync(__dirname, (filepath, stats) => {
+  walkSync(projectRoot, (filepath, stats) => {
     if (stats.size < 50000) {
       files.push(filepath)
     }
@@ -138,27 +141,27 @@ if (aliases) {
     })
 
     console.log('...removing the alias file...')
-    fs.unlinkSync(path.join(__dirname, '.aliases.json'))
+    fs.unlinkSync(path.join(projectRoot, '.aliases.json'))
 
     console.log('...removing the setup script file...')
-    fs.unlinkSync(path.join(__dirname, 'setup.js'))
+    fs.unlinkSync(path.join(projectRoot, 'setup.js'))
 
     console.log('...removing setup step from package.json...')
     const pkgJson = require('./package.json')
     delete pkgJson.scripts.preinstall
     fs.writeFileSync(
-      path.join(__dirname, 'package.json'),
+      path.join(projectRoot, 'package.json'),
       JSON.stringify(pkgJson, null, 2)
     )
 
     console.log('...swapping readmes...')
     fs.renameSync(
-      path.join(__dirname, 'README.md'),
-      path.join(__dirname, 'STARTER_README.md')
+      path.join(projectRoot, 'README.md'),
+      path.join(projectRoot, 'STARTER_README.md')
     )
     fs.renameSync(
-      path.join(__dirname, 'LIBRARY_README.md'),
-      path.join(__dirname, 'README.md')
+      path.join(projectRoot, 'LIBRARY_README.md'),
+      path.join(projectRoot, 'README.md')
     )
 
     console.log('done!')
