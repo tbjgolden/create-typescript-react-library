@@ -48,23 +48,54 @@ better choice: https://github.com/kentcdodds/kcd-scripts
 
 ## Setup
 
+### Step 1. Local setup
+
 ```sh
-# Clone
+# Clone this directory locally, and cd into it
 git clone https://github.com/tbjgolden/typescript-library-starter.git <yourdir>
 cd <yourdir>
+
+# Clear the git history from the starter
 rm -rf .git
-yarn # This will ask you some questions to give you a tailored boilerplate
 
-# Note:
-# if you skip it (e.g. with Ctrl-C), you can run it with `node scripts/setup.js`
+# Start the custom setup script, and install dependencies
+yarn
 
-# Install example dependencies
+# Check everything is set up correctly
+yarn test
+
+# An example is in examples/basic-usage, let's also install its dependencies
 cd examples/basic-usage
 yarn
 
-# test it's working with:
-yarn test # this builds everything, then tests the bundles
+# To see the example alive, run this (inside the examples/basic-usage directory)
+yarn start
+
+# Finally, let's initialize a new git repository
+git init
+git add -A
+git commit -m 'Initial commit' # This will not trigger an npm release
+git remote add origin https://github.com/tbjgolden/sADFGHJK-.git
+git push -u origin master
+
+
 ```
+
+### Step 2. Github setup
+
+1. Create an NPM token:
+   https://docs.npmjs.com/creating-and-viewing-authentication-tokens
+2. Create a Github repo of the **same name** that you selected in the setup
+   script
+3. Add the NPM token to your repository's secrets:  
+   your-repo > Settings > Secrets > New Secret  
+   `NPM_TOKEN=<your token from Step 1>`
+
+> This will enable automatic releases that follow semantic versioning rules, by
+> reading your commit messages. The commit messages will need to be in the
+> [conventional changelog](https://github.com/conventional-changelog/conventional-changelog)
+> format. A commit message hook will help you make sure that your commit
+> messages are correctly formatted.
 
 <!--
 ## Main Scripts

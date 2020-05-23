@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // this script is zero dependencies
-// it can be run directly with `node setup.js`
+// it can be run directly with `node scripts/setup.js`
 
 const fs = require('fs')
 const path = require('path')
@@ -72,7 +72,7 @@ const askAll = (questions) => {
 let aliases = null
 
 try {
-  aliases = require('./.aliases.json')
+  aliases = require('../.aliases.json')
 } catch (err) {}
 
 if (aliases) {
@@ -133,7 +133,7 @@ if (aliases) {
 
     console.log('==============================')
     console.log('...replacing the aliases in the files...')
-    files.forEach((file, i) => {
+    files.forEach((file) => {
       fs.writeFileSync(
         file,
         fs.readFileSync(file, 'utf8').replace(new RegExp(regex, 'g'), replacer)
@@ -144,10 +144,10 @@ if (aliases) {
     fs.unlinkSync(path.join(projectRoot, '.aliases.json'))
 
     console.log('...removing the setup script file...')
-    fs.unlinkSync(path.join(projectRoot, 'setup.js'))
+    fs.unlinkSync(path.join(projectRoot, 'scripts/setup.js'))
 
     console.log('...removing setup step from package.json...')
-    const pkgJson = require('./package.json')
+    const pkgJson = require('../package.json')
     delete pkgJson.scripts.preinstall
     fs.writeFileSync(
       path.join(projectRoot, 'package.json'),
