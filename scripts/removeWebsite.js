@@ -77,6 +77,6 @@ fs.writeFileSync(
     Table of Contents
     =================
 
-      * [API](./api)
+      * [API](api)
   `
 )
