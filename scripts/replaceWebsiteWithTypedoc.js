@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require('fs-extra')
 const path = require('path')
 const dedent = require('dedent')
@@ -37,5 +39,5 @@ fs.writeFileSync(
             with:
               github_token: ${'${{ secrets.GITHUB_TOKEN }}'}
               publish_dir: ./typedoc
-  `
+  ` + '\n'
 )
