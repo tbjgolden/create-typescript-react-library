@@ -99,53 +99,24 @@ git push -u origin master
 > [conventional commit](https://www.conventionalcommits.org) format). If you're
 > not familiar with it, it's worth reading the (very short) spec and FAQs.
 
-<!--
-## Main Scripts
+### Step 3. Go!
 
-```
+```sh
 yarn start
-
-do we need to choose? ⬇
-
-if (src contains .tsx file) {
-  // get react live reload working somehow
-  // potential solutions: yarn link, --check-files, react storybook
-} else {
-  // get tdd running somehow
-  // maybe enhance test suite with some clever automatic mocks
-  // performance testing
-}
-```
--->
-
-# Project Website
-
-The website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern
-static website generator.
-
-### Local Development
-
-```
-$ yarn start:site
 ```
 
-This command starts a local development server and open up a browser window.
-Most changes are reflected live without having to restart the server.
+This will:
 
-### Build
+1. run Storybook (if there are `src/**/*.stories.{ts,tsx}` files).
+2. run Jest in watch mode (if there are `src/**/*.spec.{ts,tsx}` files)
 
-```
-$ yarn build:site
-```
+> Note: It will do nothing if no matching `.stories.` or `.spec.` files are
+> found.
 
-This command generates static content into the `build` directory and can be
-served using any static contents hosting service.
+## Project Website
 
-### Deployment
+This starter also includes a website built using
+[Docusaurus 2](https://v2.docusaurus.io/); the same used on popular projects
+such as `create-react-app` and `prettier`.
 
-```
-$ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy:site
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to
-build the website and push to the `gh-pages` branch.
+Many open source projects will not need a website.
