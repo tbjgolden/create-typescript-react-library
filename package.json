@@ -22,6 +22,7 @@
     "format": "prettier --write \"*.{js,ts,tsx}\"",
     "lint": "eslint . --ext .ts,.tsx",
     "preinstall": "node scripts/setup.js",
+    "postinstall": "patch-package",
     "postbundle": "del compiled && cp-cli ./index.js ./dist/index.js",
     "start": "run-p start:*",
     "start:storybook": "node scripts/startStorybook.js",
@@ -103,6 +104,7 @@
     "husky": "^4.2.5",
     "jest": "26.0.1",
     "npm-run-all": "4.1.5",
+    "patch-package": "^6.2.2",
     "prettier": "2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -121,6 +123,7 @@
     "ts-jest": "26.0.0",
     "ts-loader": "^7.0.5",
     "typedoc": "^0.17.7",
+    "typedoc-plugin-markdown": "^2.2.17",
     "typescript": "3.9.3"
   },
   "commitlint": {

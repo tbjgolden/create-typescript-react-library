@@ -1,10 +1,8 @@
-const baseUrl = '/gocvmmeyaahgakggbjwmcmif/'
-
 module.exports = {
   title: 'gocvmmeyaahgakggbjwmcmif',
   tagline: 'rwmgkcxafpdrkuvtfszrfvwv',
   url: 'https://xrdnwftmsmirdshgpfoyocjh.github.io',
-  baseUrl,
+  baseUrl: '/gocvmmeyaahgakggbjwmcmif/',
   favicon: 'img/favicon.ico',
   organizationName: 'xrdnwftmsmirdshgpfoyocjh',
   projectName: 'gocvmmeyaahgakggbjwmcmif',
@@ -22,7 +20,7 @@ module.exports = {
           label: 'Docs',
           position: 'left'
         },
-        { href: `${baseUrl}api`, label: 'API', position: 'left' },
+        { to: 'docs/api/index', label: 'API', position: 'left' },
         { to: 'blog', label: 'Blog', position: 'left' },
         {
           href:

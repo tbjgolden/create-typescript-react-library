@@ -23,8 +23,8 @@ jobs:
       - run: yarn install --frozen-lockfile
 
       - run:
-          npx typedoc --mode file --out website/static/api --theme minimal
-          --readme none src/index.tsx
+          npx typedoc --mode file --out website/docs/api --theme docusaurus2
+          --readme none --skipSidebar src/index.tsx
 
       - run: yarn install --frozen-lockfile
         working-directory: website
