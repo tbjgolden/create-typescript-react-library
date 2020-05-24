@@ -5,5 +5,6 @@
     "checkJs": true
   },
   "include": ["examples", "scripts", "src", "test", "website"],
+  "exclude": [],
   "files": ["index.js", "rollup.config.js"]
 }

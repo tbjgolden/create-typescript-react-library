@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, waitFor, screen } from '@testing-library/react'
-import C, { id } from '../src/index'
+import C, { id } from './index'
 
 describe('Component', () => {
   it('should render correctly', async () => {

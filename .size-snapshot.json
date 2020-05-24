@@ -1,16 +1,16 @@
 {
   "dist/gocvmmeyaahgakggbjwmcmif.cjs.development.js": {
-    "bundled": 482,
+    "bundled": 485,
     "minified": 362,
     "gzipped": 262
   },
   "dist/gocvmmeyaahgakggbjwmcmif.cjs.production.js": {
-    "bundled": 388,
+    "bundled": 391,
     "minified": 279,
     "gzipped": 225
   },
   "dist/gocvmmeyaahgakggbjwmcmif.esm.js": {
-    "bundled": 391,
+    "bundled": 394,
     "minified": 283,
     "gzipped": 214,
     "treeshaked": {
@@ -24,12 +24,12 @@
     }
   },
   "dist/gocvmmeyaahgakggbjwmcmif.umd.development.js": {
-    "bundled": 901,
+    "bundled": 904,
     "minified": 555,
     "gzipped": 363
   },
   "dist/gocvmmeyaahgakggbjwmcmif.umd.production.js": {
-    "bundled": 768,
+    "bundled": 771,
     "minified": 459,
     "gzipped": 317
   }

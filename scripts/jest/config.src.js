@@ -5,8 +5,8 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   preset: 'ts-jest',
   rootDir: process.cwd(),
-  roots: ['<rootDir>/test'],
+  roots: ['<rootDir>/src'],
   setupFilesAfterEnv: ['<rootDir>/scripts/jest/setupJest.ts'],
-  testMatch: ['<rootDir>/test/*.spec.ts?(x)'],
+  testMatch: ['<rootDir>/src/*.spec.ts?(x)'],
   transform: { '^.+\\.(js|tsx?)$': 'ts-jest' }
 }
