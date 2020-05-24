@@ -10,7 +10,6 @@ node_modules
 /website/.docusaurus
 /website/static/api
 /website/build
-/typedoc
 .cache-loader
 .size-snapshot.json
 

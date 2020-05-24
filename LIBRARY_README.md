@@ -15,25 +15,6 @@ import { render } from 'react-dom'
 render(, document.getElementById('root'))
 ```
 
-## Live Examples
-
-- [Basic Usage](https://codesandbox.io/)
-- [API Example](https://codesandbox.io/)
-- [UMD Build (Development)](https://codesandbox.io/)
-- [UMD Build (Production)](https://codesandbox.io/)
-
-## API
-
-**Props**
-
-- `foo` - Something something.
-- `bar` - _Optional_ Something something. Defaults to `null`.
-
-**Example**
-
-```jsx
-```
-
 ## Installation
 
 ```
@@ -55,6 +36,14 @@ For the minified production version, make sure you have already included:
 
 - [`React`](https://unpkg.com/react/umd/react.production.min.js)
 - [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.production.min.js)
+
+## [`Docs`](https://xrdnwftmsmirdshgpfoyocjh.github.io/gocvmmeyaahgakggbjwmcmif/docs)
+
+## [`API`](https://xrdnwftmsmirdshgpfoyocjh.github.io/gocvmmeyaahgakggbjwmcmif/docs/api)
+
+## Live Examples
+
+- [Basic Usage](https://github.com/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif/tree/master/examples/basic-usage)
 
 ## License
 
