@@ -95,7 +95,9 @@ git push -u origin master
 > reading your commit messages. The commit messages will need to be in the
 > [conventional changelog](https://github.com/conventional-changelog/conventional-changelog)
 > format. A commit message hook will help you make sure that your commit
-> messages are correctly formatted.
+> messages are correctly formatted (in the
+> [conventional commit](https://www.conventionalcommits.org) format). If you're
+> not familiar with it, it's worth reading the (very short) spec and FAQs.
 
 <!--
 ## Main Scripts
