@@ -32,5 +32,39 @@
     "bundled": 771,
     "minified": 459,
     "gzipped": 317
+  },
+  "gocvmmeyaahgakggbjwmcmif.cjs.development.js": {
+    "bundled": 485,
+    "minified": 362,
+    "gzipped": 262
+  },
+  "gocvmmeyaahgakggbjwmcmif.cjs.production.js": {
+    "bundled": 391,
+    "minified": 279,
+    "gzipped": 225
+  },
+  "gocvmmeyaahgakggbjwmcmif.esm.js": {
+    "bundled": 394,
+    "minified": 283,
+    "gzipped": 214,
+    "treeshaked": {
+      "rollup": {
+        "code": 87,
+        "import_statements": 74
+      },
+      "webpack": {
+        "code": 1169
+      }
+    }
+  },
+  "gocvmmeyaahgakggbjwmcmif.umd.development.js": {
+    "bundled": 904,
+    "minified": 555,
+    "gzipped": 363
+  },
+  "gocvmmeyaahgakggbjwmcmif.umd.production.js": {
+    "bundled": 771,
+    "minified": 459,
+    "gzipped": 317
   }
 }

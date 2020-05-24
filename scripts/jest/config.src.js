@@ -1,6 +1,10 @@
 module.exports = {
   collectCoverage: true,
-  collectCoverageFrom: ['src/*.{ts,tsx}'],
+  collectCoverageFrom: [
+    'src/**/*.{ts,tsx}',
+    '!src/**/*.spec.{ts,tsx}',
+    '!src/**/*.stories.{ts,tsx}'
+  ],
   coverageReporters: ['json', 'json-summary', 'lcov', 'text', 'clover'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   preset: 'ts-jest',
