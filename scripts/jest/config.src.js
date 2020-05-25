@@ -2,6 +2,7 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
+    '!src/index.ts',
     '!src/**/*.spec.{ts,tsx}',
     '!src/**/*.stories.{ts,tsx}'
   ],
@@ -11,6 +12,6 @@ module.exports = {
   rootDir: process.cwd(),
   roots: ['<rootDir>/src'],
   setupFilesAfterEnv: ['<rootDir>/scripts/jest/setupJest.ts'],
-  testMatch: ['<rootDir>/src/*.spec.ts?(x)'],
+  testMatch: ['<rootDir>/src/**/*.spec.ts?(x)'],
   transform: { '^.+\\.(js|tsx?)$': 'ts-jest' }
 }
