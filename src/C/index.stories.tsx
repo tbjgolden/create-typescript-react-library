@@ -9,7 +9,7 @@ export default {
   decorators: [withKnobs]
 }
 
-export const Default = () => {
+export const Default = (): JSX.Element => {
   const textValue = text('Name', 'Example Text')
   return <C text={textValue} />
 }

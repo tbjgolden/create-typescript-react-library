@@ -33,7 +33,7 @@ fs.writeFileSync(
 
           - run: yarn install --frozen-lockfile
 
-          - run: npx typedoc --mode file --out docs/api --theme markdown --readme none src/index.tsx
+          - run: npx typedoc --mode file --out docs/api --theme markdown --readme none src/index.ts
 
           - name: Deploy
             uses: peaceiris/actions-gh-pages@v3

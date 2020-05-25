@@ -23,7 +23,7 @@ sidebar_label: "Globals"
 
 ▸ **C**(`__namedParameters`: object): *Element‹›*
 
-*Defined in [index.tsx:8](https://github.com/tbjgolden/typescript-library-starter/blob/6e6130c/src/index.tsx#L8)*
+*Defined in [index.ts:8](https://github.com/tbjgolden/typescript-library-starter/blob/6e6130c/src/index.ts#L8)*
 
 **Parameters:**
 
@@ -41,7 +41,7 @@ ___
 
 ▸ **id**(`prefix`: string): *string*
 
-*Defined in [index.tsx:14](https://github.com/tbjgolden/typescript-library-starter/blob/6e6130c/src/index.tsx#L14)*
+*Defined in [index.ts:14](https://github.com/tbjgolden/typescript-library-starter/blob/6e6130c/src/index.ts#L14)*
 
 **Parameters:**
 

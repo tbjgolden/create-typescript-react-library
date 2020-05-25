@@ -22,4 +22,4 @@ sidebar_label: "Props"
 
 • **text**: *string*
 
-*Defined in [index.tsx:5](https://github.com/tbjgolden/typescript-library-starter/blob/6e6130c/src/index.tsx#L5)*
+*Defined in [index.ts:5](https://github.com/tbjgolden/typescript-library-starter/blob/6e6130c/src/index.ts#L5)*
