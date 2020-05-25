@@ -35,11 +35,18 @@ fs.writeFileSync(
 
           - run: npx typedoc --mode file --out docs/api --theme markdown --readme none src/index.ts
 
-          - name: Deploy
-            uses: peaceiris/actions-gh-pages@v3
+          - name: Commit files
+            run: |
+              git add docs/api
+              git config --local user.email "action@github.com"
+              git config --local user.name "GitHub Action"
+              git commit -m "ci: Autogenerate API Docs"
+
+          - name: Push changes
+            if: github.ref == 'refs/heads/master'
+            uses: ad-m/github-push-action@master
             with:
               github_token: ${'${{ secrets.GITHUB_TOKEN }}'}
-              publish_dir: ./typedoc
   ` + '\n'
 )
 

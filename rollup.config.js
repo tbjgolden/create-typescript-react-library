@@ -5,6 +5,9 @@ import replace from 'rollup-plugin-replace'
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot'
 import sourcemaps from 'rollup-plugin-sourcemaps'
 import { terser } from 'rollup-plugin-terser'
+
+import json from '@rollup/plugin-json'
+
 import pkg from './package.json'
 
 const input = './compiled/index.js'
@@ -80,6 +83,7 @@ const getPlugins = (bundleType) => [
     plugins: ['@babel/transform-runtime'],
     runtimeHelpers: true
   }),
+  json(),
   replace({
     'process.env.NODE_ENV': isProduction(bundleType)
       ? '"production"'
