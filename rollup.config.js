@@ -147,6 +147,5 @@ export default [
   getCjsConfig('CJS_DEV'),
   getCjsConfig('CJS_PROD'),
   getEsConfig(),
-  getUmdConfig('UMD_DEV'),
-  getUmdConfig('UMD_PROD')
+  ...(pkg.browser ? [getUmdConfig('UMD_DEV'), getUmdConfig('UMD_PROD')] : [])
 ]
