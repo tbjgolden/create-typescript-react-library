@@ -84,9 +84,8 @@ git push -u origin master
    https://docs.npmjs.com/creating-and-viewing-authentication-tokens
 2. Create a Github repo of the **same name** that you selected in the setup
    script
-3. Add the NPM token to your repository's secrets:  
-   your-repo > Settings > Secrets > New Secret  
-   `NPM_TOKEN=<your token from Step 1>`
+3. Add the NPM token to your repository's secrets: your-repo > Settings >
+   Secrets > New Secret `NPM_TOKEN=<your token from Step 1>`
 
 > This will enable automatic releases that follow semantic versioning rules, by
 > reading your commit messages. The commit messages will need to be in the

@@ -22,7 +22,7 @@
     "format": "prettier --write \"*.{js,ts,tsx}\"",
     "lint": "eslint . --ext .ts,.tsx",
     "preinstall": "node scripts/setup.js",
-    "postinstall": "patch-package",
+    "postinstall": "npx patch-package",
     "postbundle": "del compiled && cp-cli ./index.js ./dist/index.js",
     "start": "run-p start:*",
     "start:storybook": "node scripts/startStorybook.js",

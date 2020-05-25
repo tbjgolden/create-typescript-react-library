@@ -39,9 +39,10 @@ const getExternal = (bundleType) => {
   const makeExternalPredicate = (externals) => {
     if (externals.length === 0) {
       return () => false
+    } else {
+      const pattern = new RegExp(`^(${externals.join('|')})($|/)`)
+      return (id) => pattern.test(id)
     }
-    const pattern = new RegExp(`^(${externals.join('|')})($|/)`)
-    return (id) => pattern.test(id)
   }
 
   switch (bundleType) {
