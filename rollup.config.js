@@ -33,7 +33,7 @@ const kebabToPascal = (kebab) => {
 
 const getGlobals = (bundleType) =>
   ['UMD_DEV', 'UMD_PROD'].includes(bundleType)
-    ? Object.keys(pkg.peerDependencies).reduce(
+    ? Object.keys(pkg.peerDependencies || {}).reduce(
         (dependencyNameMap, npmDependency) => ({
           ...dependencyNameMap,
           [npmDependency]:
@@ -44,7 +44,7 @@ const getGlobals = (bundleType) =>
     : {}
 
 const getExternal = (bundleType) => {
-  const peerDependencies = Object.keys(pkg.peerDependencies)
+  const peerDependencies = Object.keys(pkg.peerDependencies || {})
   const dependencies = Object.keys(pkg.dependencies)
 
   const makeExternalPredicate = (externals) => {

@@ -1,15 +1,10 @@
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
+import React from 'react'
 
 interface Props {
   text: string
 }
 
-const C: React.SFC<Props> = ({ text }) => <h1>{text}</h1>
-
-C.propTypes = {
-  text: PropTypes.string.isRequired
-}
+const C: React.FunctionComponent<Props> = ({ text }) => <h1>{text}</h1>
 
 export const id = (prefix = 'id'): string =>
   `${prefix}-${Math.random().toString().slice(2)}`
