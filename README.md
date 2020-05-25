@@ -154,6 +154,9 @@ set up.
     global names (`window.$` might be used in `import ... from "jquery"`). For
     web builds to work, you'll have to add the correct global name to the
     knownDependencyNames map in rollup.config.js
+- Avoid the PropTypes library; use TypeScript types instead; if you're new to
+  React in TypeScript, check out the
+  [React TypeScript cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet)
 - TypeScript configs are a hassle to configure for libraries. There's a
   tsconfig.eslint.json file at the base of this project, which extends the build
   tsconfig with settings to enable better linting
