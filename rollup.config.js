@@ -10,7 +10,7 @@ import json from '@rollup/plugin-json'
 
 import pkg from './package.json'
 
-const input = './compiled/index.js'
+const inputs = ['./compiled/index.js']
 
 const knownDependencyNames = {
   'react-dom': 'ReactDOM',
@@ -29,7 +29,7 @@ const kebabToPascal = (kebab) => {
     })
     .join('')
   console.warn(
-    `Guessing the browser global name for "${kebab}" is "${pascal}"\nIf not, add\n  '${kebab}': '<correct global name>',\nto knownDependencyNames in rollup.config.js`
+    `Guessing the window.[name] for package "${kebab}" is "${pascal}"\nIf not, add\n  '${kebab}': '[name]',\nto knownDependencyNames in rollup.config.js`
   )
   return pascal
 }
@@ -104,7 +104,7 @@ const getPlugins = (bundleType) => [
     })
 ]
 
-const getCjsConfig = (bundleType) => ({
+const getCjsConfig = (input, bundleType) => ({
   input,
   external: getExternal(bundleType),
   output: {
@@ -117,7 +117,7 @@ const getCjsConfig = (bundleType) => ({
   plugins: getPlugins(bundleType)
 })
 
-const getEsConfig = () => ({
+const getEsConfig = (input) => ({
   input,
   external: getExternal('ES'),
   output: {
@@ -128,7 +128,7 @@ const getEsConfig = () => ({
   plugins: getPlugins('ES')
 })
 
-const getUmdConfig = (bundleType) => ({
+const getUmdConfig = (input, bundleType) => ({
   input,
   external: getExternal(bundleType),
   output: {
@@ -143,9 +143,13 @@ const getUmdConfig = (bundleType) => ({
   plugins: getPlugins(bundleType)
 })
 
-export default [
-  getCjsConfig('CJS_DEV'),
-  getCjsConfig('CJS_PROD'),
-  getEsConfig(),
-  ...(pkg.browser ? [getUmdConfig('UMD_DEV'), getUmdConfig('UMD_PROD')] : [])
-]
+export default inputs
+  .map((input) => [
+    getCjsConfig(input, 'CJS_DEV'),
+    getCjsConfig(input, 'CJS_PROD'),
+    getEsConfig(input),
+    ...(pkg.browser
+      ? [getUmdConfig(input, 'UMD_DEV'), getUmdConfig(input, 'UMD_PROD')]
+      : [])
+  ])
+  .flat()
