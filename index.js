@@ -1,7 +1,7 @@
 'use strict'
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./compare-stylesheet.cjs.production.js')
+  module.exports = require('./gocvmmeyaahgakggbjwmcmif.cjs.production.js')
 } else {
-  module.exports = require('./compare-stylesheet.cjs.development.js')
+  module.exports = require('./gocvmmeyaahgakggbjwmcmif.cjs.development.js')
 }

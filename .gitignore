@@ -4,6 +4,7 @@
 node_modules
 
 # Generated files
+/dist
 /coverage
 /compiled
 /website/.docusaurus

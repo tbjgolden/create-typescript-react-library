@@ -12,6 +12,11 @@ import pkg from './package.json'
 
 const inputs = ['./compiled/index.js']
 
+const knownDependencyNames = {
+  'react-dom': 'ReactDOM',
+  'react': 'React'
+}
+
 const kebabToPascal = (kebab) => {
   const pascal = kebab
     .split('-')
@@ -74,7 +79,7 @@ const getPlugins = (bundleType) => [
   babel({
     babelrc: false,
     exclude: 'node_modules/**',
-    presets: [['@babel/env', { loose: true, modules: false }]],
+    presets: [['@babel/env', { loose: true, modules: false }], '@babel/react'],
     plugins: ['@babel/transform-runtime'],
     runtimeHelpers: true
   }),
@@ -103,7 +108,7 @@ const getCjsConfig = (input, bundleType) => ({
   input,
   external: getExternal(bundleType),
   output: {
-    file: `dist/compare-stylesheet.cjs.${
+    file: `dist/gocvmmeyaahgakggbjwmcmif.cjs.${
       isProduction(bundleType) ? 'production' : 'development'
     }.js`,
     format: 'cjs',
@@ -127,12 +132,12 @@ const getUmdConfig = (input, bundleType) => ({
   input,
   external: getExternal(bundleType),
   output: {
-    file: `dist/compare-stylesheet.umd.${
+    file: `dist/gocvmmeyaahgakggbjwmcmif.umd.${
       isProduction(bundleType) ? 'production' : 'development'
     }.js`,
     format: 'umd',
     globals: getGlobals(bundleType),
-    name: 'CompareStylesheet',
+    name: 'Gocvmmeyaahgakggbjwmcmif',
     sourcemap: true
   },
   plugins: getPlugins(bundleType)
