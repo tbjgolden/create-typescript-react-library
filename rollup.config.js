@@ -5,46 +5,20 @@ import replace from 'rollup-plugin-replace'
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot'
 import sourcemaps from 'rollup-plugin-sourcemaps'
 import { terser } from 'rollup-plugin-terser'
+import dedent from 'dedent'
 
 import json from '@rollup/plugin-json'
 
 import pkg from './package.json'
 
-const inputs = ['./compiled/index.js']
-
-const knownDependencyNames = {
+const browserGlobals = {
   'react-dom': 'ReactDOM',
-  'react': 'React'
+  'react': 'React',
+  'lodash': '_',
+  'underscore': '_',
+  'jquery': '$',
+  'zepto': '$'
 }
-
-const kebabToPascal = (kebab) => {
-  const pascal = kebab
-    .split('-')
-    .map((str) => {
-      if (str.length > 0) {
-        return str[0].toUpperCase() + str.slice(1)
-      } else {
-        return ''
-      }
-    })
-    .join('')
-  console.warn(
-    `Guessing the window.[name] for package "${kebab}" is "${pascal}"\nIf not, add\n  '${kebab}': '[name]',\nto knownDependencyNames in rollup.config.js`
-  )
-  return pascal
-}
-
-const getGlobals = (bundleType) =>
-  ['UMD_DEV', 'UMD_PROD'].includes(bundleType)
-    ? Object.keys(pkg.peerDependencies || {}).reduce(
-        (dependencyNameMap, npmDependency) => ({
-          ...dependencyNameMap,
-          [npmDependency]:
-            knownDependencyNames[npmDependency] || kebabToPascal(npmDependency)
-        }),
-        {}
-      )
-    : {}
 
 const getExternal = (bundleType) => {
   const peerDependencies = Object.keys(pkg.peerDependencies || {})
@@ -69,8 +43,6 @@ const getExternal = (bundleType) => {
   }
 }
 
-const isProduction = (bundleType) => bundleType.endsWith('_PROD')
-
 const getPlugins = (bundleType) => [
   nodeResolve(),
   commonjs({
@@ -85,13 +57,12 @@ const getPlugins = (bundleType) => [
   }),
   json(),
   replace({
-    'process.env.NODE_ENV': isProduction(bundleType)
-      ? '"production"'
-      : '"development"'
+    'process.env.NODE_ENV':
+      bundleType === 'UMD' ? '"production"' : '"development"'
   }),
   sourcemaps(),
   sizeSnapshot(),
-  isProduction(bundleType) &&
+  bundleType === 'UMD' &&
     terser({
       output: { comments: false },
       compress: {
@@ -104,50 +75,66 @@ const getPlugins = (bundleType) => [
     })
 ]
 
-const getCjsConfig = (input, bundleType) => ({
-  input,
-  external: getExternal(bundleType),
-  output: {
-    file: `dist/gocvmmeyaahgakggbjwmcmif.cjs.${
-      isProduction(bundleType) ? 'production' : 'development'
-    }.js`,
-    format: 'cjs',
-    sourcemap: true
+export default [
+  {
+    input: './compiled/index.js',
+    external: getExternal('CJS_DEV'),
+    output: {
+      file: pkg.main,
+      format: 'cjs',
+      sourcemap: true
+    },
+    plugins: getPlugins('CJS_DEV')
   },
-  plugins: getPlugins(bundleType)
-})
-
-const getEsConfig = (input) => ({
-  input,
-  external: getExternal('ES'),
-  output: {
-    file: pkg.module,
-    format: 'es',
-    sourcemap: true
+  {
+    input: './compiled/index.js',
+    external: getExternal('ES'),
+    output: {
+      file: pkg.module,
+      format: 'es',
+      sourcemap: true
+    },
+    plugins: getPlugins('ES')
   },
-  plugins: getPlugins('ES')
-})
+  {
+    input: './compiled/index.js',
+    external: getExternal('UMD_PROD'),
+    output: {
+      file: pkg.umd,
+      format: 'umd',
+      globals: Object.keys(pkg.peerDependencies || {}).reduce(
+        (dependencyNameMap, npmDependency) => ({
+          ...dependencyNameMap,
+          [npmDependency]:
+            browserGlobals[npmDependency] ||
+            ((npmDependency) => {
+              const pascal = npmDependency
+                .split('-')
+                .map((str) =>
+                  str.length > 0 ? str[0].toUpperCase() + str.slice(1) : ''
+                )
+                .join('')
+              console.warn(
+                dedent`
+                Blindly guessing that the browser global (i.e. window.<NAME>) for npm package...
+                  "${npmDependency}"
+                ...is...
+                  "${pascal}"
 
-const getUmdConfig = (input, bundleType) => ({
-  input,
-  external: getExternal(bundleType),
-  output: {
-    file: `dist/gocvmmeyaahgakggbjwmcmif.umd.js`,
-    format: 'umd',
-    globals: getGlobals(bundleType),
-    name: 'Gocvmmeyaahgakggbjwmcmif',
-    sourcemap: true
-  },
-  plugins: getPlugins(bundleType)
-})
+                To fix this message
+                  '${npmDependency}': '<NAME>',
+                to 'browserGlobals' in rollup.config.js
 
-export default inputs
-  .map((input) => [
-    getCjsConfig(input, 'CJS_DEV'),
-    getCjsConfig(input, 'CJS_PROD'),
-    getEsConfig(input),
-    ...(pkg.browser
-      ? [getUmdConfig(input, 'UMD_PROD')]
-      : [])
-  ])
-  .flat()
+                `
+              )
+              return pascal
+            })()
+        }),
+        {}
+      ),
+      name: 'Gocvmmeyaahgakggbjwmcmif',
+      sourcemap: true
+    },
+    plugins: getPlugins('UMD_PROD')
+  }
+]

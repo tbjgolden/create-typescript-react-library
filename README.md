@@ -4,8 +4,7 @@ This starter enables simple creation of libraries using TypeScript.
 
 It can be used for libraries either **_with or without_** React/JSX.
 
-It includes automatic API documentation generation and (optionally) a website to
-show it; Storybook and Jest integration for development.
+It includes automatic API documentation generation and tools for development.
 
 > Inspired by the best bits of `alexjoverm/typescript-library-starter` and
 > `tanem/generator-typescript-react-lib`.
@@ -31,7 +30,6 @@ from me
 - [x] interactive setup script which asks the basics to help get you up and
       running
 - [x] version controlled engines like node and yarn with asdf
-- [x] docusaurus website integrated with typedoc generated api docs
 - [x] Storybook integration
 - [x] Semantic releases
 ### Requirements
@@ -53,12 +51,7 @@ rm -rf .git
 # Start the custom setup script, and install dependencies
 yarn
 
-# An example is in examples/basic-usage, let's also install its dependencies
-cd examples/basic-usage
-yarn
-
 # Check everything is set up correctly
-cd ../..
 yarn test
 
 # Finally, let's initialize a new git repository
@@ -89,12 +82,6 @@ This will:
 
 > Note: It will do nothing if no matching `.stories.` or `.spec.` files are
 > found.
-
-#### `yarn start` on the included example
-
-`examples/basic-usage` is an basic project bootstrapped with Create React App,
-which you can use to demo an example of how to use the library you're making. To
-run it, run `yarn start` inside `examples/basic-usage`.
 
 ## I'm not creating a React library
 
