@@ -8,7 +8,6 @@ node_modules
 /coverage
 /compiled
 .cache-loader
-.size-snapshot.json
 
 # Misc
 .DS_Store

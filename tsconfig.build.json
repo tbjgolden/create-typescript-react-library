@@ -1,4 +1,5 @@
-// This is only used for project compilation
+// This is used as part of the build process
+// It is overridden for linting
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
@@ -16,10 +17,11 @@
     "outDir": "compiled",
     "pretty": true,
     "removeComments": true,
+    "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
     "target": "es5"
   },
-  "include": ["src"],
-  "exclude": ["**/*.stories.tsx"]
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.stories.*"]
 }

@@ -1,10 +1,12 @@
-// This is used by projects that find and use the "tsconfig.json" file
+// This is used by anything that looks for a "tsconfig.json" file
 {
   "extends": "./tsconfig.build.json",
   "exclude": ["node_modules"],
-  "include": ["scripts", "src", "test"],
+  "include": ["config", "src", "test"],
+  "files": ["rollup.config.js"],
   "compilerOptions": {
     "allowJs": true,
+    "checkJs": false,
     "declaration": false,
     "declarationDir": null,
     "module": "commonjs"

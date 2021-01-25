@@ -11,7 +11,7 @@ module.exports = {
   preset: 'ts-jest',
   rootDir: process.cwd(),
   roots: ['<rootDir>/src'],
-  setupFilesAfterEnv: ['<rootDir>/scripts/jest/setupJest.ts'],
+  setupFilesAfterEnv: ['<rootDir>/config/jest/setupJest.ts'],
   testMatch: ['<rootDir>/src/**/*.spec.ts?(x)'],
   transform: { '^.+\\.(js|tsx?)$': 'ts-jest' }
 }

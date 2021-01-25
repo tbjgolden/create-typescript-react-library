@@ -1,14 +1,14 @@
-import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import nodeResolve from 'rollup-plugin-node-resolve'
-import replace from 'rollup-plugin-replace'
-import { sizeSnapshot } from 'rollup-plugin-size-snapshot'
-import sourcemaps from 'rollup-plugin-sourcemaps'
-import { terser } from 'rollup-plugin-terser'
-import dedent from 'dedent'
-
+// Core plugins
+import { babel } from '@rollup/plugin-babel'
+import commonjs from '@rollup/plugin-commonjs'
+import nodeResolve from '@rollup/plugin-node-resolve'
 import json from '@rollup/plugin-json'
 
+// 3rd party plugins
+import { terser } from 'rollup-plugin-terser'
+
+// Helpers
+import dedent from 'dedent'
 import pkg from './package.json'
 
 const browserGlobals = {
@@ -16,8 +16,7 @@ const browserGlobals = {
   'react': 'React',
   'lodash': '_',
   'underscore': '_',
-  'jquery': '$',
-  'zepto': '$'
+  'jquery': '$'
 }
 
 const getExternal = (bundleType) => {
@@ -53,15 +52,9 @@ const getPlugins = (bundleType) => [
     exclude: 'node_modules/**',
     presets: [['@babel/env', { loose: true, modules: false }], '@babel/react'],
     plugins: ['@babel/transform-runtime'],
-    runtimeHelpers: true
+    babelHelpers: 'runtime'
   }),
   json(),
-  replace({
-    'process.env.NODE_ENV':
-      bundleType === 'UMD' ? '"production"' : '"development"'
-  }),
-  sourcemaps(),
-  sizeSnapshot(),
   bundleType === 'UMD' &&
     terser({
       output: { comments: false },
