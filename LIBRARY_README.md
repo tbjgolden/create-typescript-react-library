@@ -2,18 +2,8 @@
 
 [![npm version](https://img.shields.io/npm/v/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
 [![npm downloads](https://img.shields.io/npm/dm/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
-![coverage](/scripts/jest/shield.svg)
 
 >
-
-## Basic Usage
-
-```jsx
-import React from 'react'
-import { render } from 'react-dom'
-
-render(, document.getElementById('root'))
-```
 
 ## Installation
 

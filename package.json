@@ -31,7 +31,7 @@
     "start": "run-p start:*",
     "start:storybook": "node scripts/startStorybook.js",
     "start:tdd": "node scripts/startTDD.js && yarn test:src --watch",
-    "test": "run-s check:* lint build test:* && node scripts/jest/generateShield.js",
+    "test": "run-s check:* lint build test:*",
     "test:cjs": "jest --config ./scripts/jest/config.cjs.js",
     "test:cjsprod": "cross-env NODE_ENV=production jest --config ./scripts/jest/config.cjs.js",
     "test:es": "jest --config ./scripts/jest/config.es.js",
