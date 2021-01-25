@@ -12,7 +12,7 @@
   "scripts": {
     "build": "run-s clean compile bundle",
     "bundle": "rollup -c",
-    "check:format": "prettier --list-different \"**/*.{js,ts,tsx}\"",
+    "check:format": "prettier --ignore-path ./config/.prettierignore  --config ./config/.prettierrc.js --list-different \"**/*.{js,ts,tsx}\"",
     "check:types": "tsc -p tsconfig.build.json --noEmit",
     "clean": "run-p clean:*",
     "clean:compiled": "del compiled",
@@ -28,10 +28,10 @@
     "start:storybook": "node scripts/startStorybook.js",
     "start:tdd": "node scripts/startTDD.js && yarn test:src --watch",
     "test": "run-s check:* lint build test:*",
-    "test:cjs": "jest --config ./config/jest/config.cjs.js",
-    "test:es": "jest --config ./config/jest/config.es.js",
-    "test:src": "jest --config ./config/jest/config.src.js",
-    "test:umdprod": "jest --config ./config/jest/config.umd.js",
+    "test:cjs": "jest --config ./config/jest/config.cjs.ts",
+    "test:es": "jest --config ./config/jest/config.es.ts",
+    "test:src": "jest --config ./config/jest/config.src.ts",
+    "test:umdprod": "jest --config ./config/jest/config.umd.ts",
     "typedoc": "typedoc --mode file --out docs/api --theme markdown --readme none src/index.ts",
     "semantic-release": "semantic-release"
   },

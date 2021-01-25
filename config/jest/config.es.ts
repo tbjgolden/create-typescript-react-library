@@ -1,8 +1,9 @@
-const srcConfig = require('./config.src')
+import srcConfig from './config.src'
 
-module.exports = Object.assign({}, srcConfig, {
+module.exports = {
+  ...srcConfig,
   collectCoverage: false,
   moduleNameMapper: {
     '^../src$': `<rootDir>/dist/gocvmmeyaahgakggbjwmcmif.esm.js`
   }
-})
+}

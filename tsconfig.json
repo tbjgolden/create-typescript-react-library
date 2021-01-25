@@ -2,7 +2,7 @@
 {
   "extends": "./tsconfig.build.json",
   "exclude": ["node_modules"],
-  "include": ["config", "src", "test"],
+  "include": ["config", "src"],
   "files": ["rollup.config.js"],
   "compilerOptions": {
     "allowJs": true,
