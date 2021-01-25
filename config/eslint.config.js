@@ -1,5 +1,4 @@
 module.exports = {
-  root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',
@@ -26,5 +25,13 @@ module.exports = {
     'react/prop-types': 'off',
     'react-hooks/exhaustive-deps': 'warn',
     'react-hooks/rules-of-hooks': 'error'
-  }
+  },
+  ignorePatterns: [
+    'compiled/',
+    'coverage/',
+    'dist/',
+    'node_modules/',
+    '/*.js',
+    '/*.json'
+  ]
 }

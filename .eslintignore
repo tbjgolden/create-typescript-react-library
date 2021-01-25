@@ -1,9 +1,0 @@
-# generated
-compiled/
-coverage/
-dist/
-node_modules/
-
-# config
-/*.js
-/*.json
