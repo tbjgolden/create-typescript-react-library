@@ -8,7 +8,8 @@
 ## Installation
 
 ```
-$ npm install gocvmmeyaahgakggbjwmcmif --save
+npm install gocvmmeyaahgakggbjwmcmif --save
+# yarn add gocvmmeyaahgakggbjwmcmif
 ```
 
 There are also UMD builds available via [unpkg](https://unpkg.com/):
@@ -27,13 +28,10 @@ For the minified production version, make sure you have already included:
 - [`React`](https://unpkg.com/react/umd/react.production.min.js)
 - [`ReactDOM`](https://unpkg.com/react-dom/umd/react-dom.production.min.js)
 
-## [`Docs`](https://xrdnwftmsmirdshgpfoyocjh.github.io/gocvmmeyaahgakggbjwmcmif/docs)
+## Documentation
 
-## [`API`](https://xrdnwftmsmirdshgpfoyocjh.github.io/gocvmmeyaahgakggbjwmcmif/docs/api)
-
-## Live Examples
-
-- [Basic Usage](https://github.com/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif/tree/master/examples/basic-usage)
+* [`Docs`](docs)
+* [`API`](docs/api)
 
 ## License
 

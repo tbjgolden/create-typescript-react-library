@@ -132,9 +132,7 @@ const getUmdConfig = (input, bundleType) => ({
   input,
   external: getExternal(bundleType),
   output: {
-    file: `dist/gocvmmeyaahgakggbjwmcmif.umd.${
-      isProduction(bundleType) ? 'production' : 'development'
-    }.js`,
+    file: `dist/gocvmmeyaahgakggbjwmcmif.umd.js`,
     format: 'umd',
     globals: getGlobals(bundleType),
     name: 'Gocvmmeyaahgakggbjwmcmif',
@@ -149,7 +147,7 @@ export default inputs
     getCjsConfig(input, 'CJS_PROD'),
     getEsConfig(input),
     ...(pkg.browser
-      ? [getUmdConfig(input, 'UMD_DEV'), getUmdConfig(input, 'UMD_PROD')]
+      ? [getUmdConfig(input, 'UMD_PROD')]
       : [])
   ])
   .flat()

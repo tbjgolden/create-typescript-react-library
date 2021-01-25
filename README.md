@@ -66,7 +66,7 @@ git init
 git add -A
 git commit -m 'Initial commit' --no-verify
 git remote add origin https://github.com/<user>/<repo>.git
-git push -u origin master
+git push -u origin main
 ```
 
 ### Step 2. Github setup
