@@ -24,7 +24,6 @@
     "postinstall": "npx patch-package",
     "postbundle": "del compiled",
     "start": "run-p start:*",
-    "start:storybook": "node scripts/startStorybook.js",
     "start:tdd": "node scripts/startTDD.js && yarn test:src --watch",
     "test": "run-s check:* lint build test:*",
     "test:cjs": "jest --config ./config/jest/config.cjs.ts",
@@ -54,11 +53,7 @@
   "homepage": "github:xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif",
   "peerDependencies": {},
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
-    "@rollup/plugin-babel": "^5.2.2",
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.1.0",
-    "@types/dedent": "^0.7.0"
+    "@babel/runtime": "^7.12.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -67,9 +62,12 @@
     "@babel/preset-env": "7.12.11",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@rollup/plugin-babel": "^5.2.2",
+    "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@storybook/addon-knobs": "^6.1.15",
+    "@rollup/plugin-node-resolve": "^11.1.0",
     "@testing-library/jest-dom": "^5.11.9",
+    "@types/dedent": "^0.7.0",
     "@types/jest": "26.0.20",
     "@types/mkdirp": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "4.14.0",

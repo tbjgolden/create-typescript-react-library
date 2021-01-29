@@ -9,7 +9,7 @@ const run = async (name?: string) => {
   }
 
   const state = new PersistentState()
-  if (!state.get().hasAddedReact && 0) {
+  if (!state.get().hasAddedReact) {
     throw new Error('Need to add React first')
   }
 

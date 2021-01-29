@@ -3,6 +3,9 @@ import {
   addScriptDependency,
   installDependencies
 } from './utils'
+import fs from 'fs'
+import path from 'path'
+import dedent from 'dedent'
 
 const run = async () => {
   const state = new PersistentState()
@@ -20,7 +23,6 @@ const run = async () => {
   await installDependencies(
     [
       '@babel/preset-react',
-      '@storybook/react',
       '@testing-library/react',
       '@types/react',
       '@types/react-dom',
@@ -30,10 +32,46 @@ const run = async () => {
       'eslint-plugin-react-hooks',
       'react',
       'react-dom',
-      'react-test-renderer'
+      'react-test-renderer',
+      // storybook
+      '@storybook/addon-actions',
+      '@storybook/addon-essentials',
+      '@storybook/addon-knobs',
+      '@storybook/addon-links',
+      '@storybook/react',
+      'storybook'
     ],
     'dev'
   )
+
+  const storybookDir = path.join(__dirname, '../.storybook')
+  if (!fs.existsSync(storybookDir)) {
+    fs.mkdirSync(storybookDir)
+    fs.writeFileSync(
+      path.join(storybookDir, 'main.js'),
+      dedent`
+      module.exports = {
+        stories: [
+          "../src/**/*.stories.mdx",
+          "../src/**/*.stories.@(js|jsx|ts|tsx)"
+        ],
+        addons: [
+          "@storybook/addon-links",
+          "@storybook/addon-essentials",
+          "@storybook/addon-knobs/register"
+        ]
+      }
+      ` + '\n'
+    )
+    fs.writeFileSync(
+      path.join(storybookDir, 'preview.js'),
+      dedent`
+      export const parameters = {
+        actions: { argTypesRegex: "^on[A-Z].*" },
+      }
+      ` + '\n'
+    )
+  }
 
   state.set({ hasAddedReact: true })
 }
