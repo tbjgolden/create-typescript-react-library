@@ -10,6 +10,7 @@ import { terser } from 'rollup-plugin-terser'
 // Helpers
 import dedent from 'dedent'
 import pkg from '../package.json'
+import { hasAddedReact } from './.state.json'
 
 const browserGlobals = {
   'react-dom': 'ReactDOM',
@@ -50,7 +51,10 @@ const getPlugins = (bundleType) => [
   babel({
     babelrc: false,
     exclude: 'node_modules/**',
-    presets: [['@babel/env', { loose: true, modules: false }], '@babel/react'],
+    presets: [
+      ['@babel/env', { loose: true, modules: false }],
+      ...(hasAddedReact ? ['@babel/react'] : [])
+    ],
     plugins: ['@babel/transform-runtime'],
     babelHelpers: 'runtime'
   }),

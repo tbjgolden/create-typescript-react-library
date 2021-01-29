@@ -14,16 +14,19 @@ npm install gocvmmeyaahgakggbjwmcmif --save
 
 Alternatively, there are also client web builds available:
 
-```html
-<script src="https://unpkg.com/react/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+<!-- IMPORTANT: Do not delete or change the comments in the code block below -->
 
+```html
+<!-- Dependencies -->
+
+<!-- Gocvmmeyaahgakggbjwmcmif -->
 <script src="https://unpkg.com/gocvmmeyaahgakggbjwmcmif/dist/gocvmmeyaahgakggbjwmcmif.umd.js"></script>
 ```
+
 ## Documentation
 
-* [`Docs`](docs)
-* [`API`](docs/api)
+- [`Docs`](docs)
+- [`API`](docs/api)
 
 ## License
 

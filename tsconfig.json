@@ -2,7 +2,7 @@
 {
   "extends": "./tsconfig.build.json",
   "exclude": ["node_modules"],
-  "include": ["config", "src"],
+  "include": ["config", "src", "scripts"],
   "compilerOptions": {
     "allowJs": true,
     "checkJs": false,

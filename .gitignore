@@ -8,6 +8,7 @@ node_modules
 /coverage
 /compiled
 .cache-loader
+.state.json
 
 # Misc
 .DS_Store

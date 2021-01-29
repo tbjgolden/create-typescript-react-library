@@ -32,6 +32,7 @@ from me
 - [x] version controlled engines like node and yarn with asdf
 - [x] Storybook integration
 - [x] Semantic releases
+
 ### Requirements
 
 `curl` `git` `fish` `node` `yarn`
