@@ -41,7 +41,7 @@ const run = async (name?: string) => {
     ` + '\n'
   )
   fs.writeFileSync(
-    path.join(newDir, 'index.spec.tsx'),
+    path.join(newDir, 'index.test.tsx'),
     dedent`
     import React from 'react'
     import { render, waitFor, screen } from '@testing-library/react'
@@ -73,6 +73,27 @@ const run = async (name?: string) => {
     }
     ` + '\n'
   )
+
+  const indexFile = components.find(({ name }) => name.startsWith('index.ts'))
+    ?.name
+
+  if (indexFile) {
+    const indexPath = path.join(srcDir, indexFile)
+    const fileContents = fs.readFileSync(indexPath, 'utf8')
+    const lastExportFromIndex = fileContents.lastIndexOf('export * from')
+    const lastExportFromNewLineIndex =
+      lastExportFromIndex +
+      fileContents.slice(lastExportFromIndex).indexOf('\n')
+    fs.writeFileSync(
+      indexPath,
+      `${fileContents.slice(
+        0,
+        lastExportFromNewLineIndex
+      )}\nexport * from './${name}'${fileContents.slice(
+        lastExportFromNewLineIndex
+      )}`
+    )
+  }
 }
 
 if (require.main === module) {

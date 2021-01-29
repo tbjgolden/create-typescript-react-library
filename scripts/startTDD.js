@@ -3,7 +3,7 @@
 const fg = require('fast-glob')
 const path = require('path')
 
-const entries = fg.sync(['src/**/*.spec.ts', 'src/**/*.spec.tsx'], {
+const entries = fg.sync(['src/**/*.test.ts', 'src/**/*.test.tsx'], {
   cwd: path.join(__dirname, '..')
 })
 

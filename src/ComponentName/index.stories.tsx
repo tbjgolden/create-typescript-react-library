@@ -1,15 +1,14 @@
 import React from 'react'
 import { withKnobs, text } from '@storybook/addon-knobs'
-
-import C from './index'
+import ComponentName from '.'
 
 export default {
-  component: C,
-  title: 'C',
+  component: ComponentName,
+  title: 'ComponentName',
   decorators: [withKnobs]
 }
 
 export const Default = (): JSX.Element => {
   const textValue = text('Name', 'Example Text')
-  return <C text={textValue} />
+  return <ComponentName text={textValue} />
 }

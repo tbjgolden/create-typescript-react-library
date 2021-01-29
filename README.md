@@ -79,9 +79,9 @@ git push -u origin main
 This will:
 
 1. run Storybook (if there are `src/**/*.stories.{ts,tsx}` files).
-2. run Jest in watch mode (if there are `src/**/*.spec.{ts,tsx}` files)
+2. run Jest in watch mode (if there are `src/**/*.test.{ts,tsx}` files)
 
-> Note: It will do nothing if no matching `.stories.` or `.spec.` files are
+> Note: It will do nothing if no matching `.stories.` or `.test.` files are
 > found.
 
 ## I'm not creating a React library
@@ -94,25 +94,8 @@ yarn remove react react-dom
 
 Remove the `browser` key in package.json.
 
-## How to get along with this starter
+## Pointers
 
-There's a few things I've learnt about Rollup, Webpack, Babel and TypeScript
-configurations from setting it up a couple of times. Some of those things have
-found their way into this project as light opinions for how a project should be
-set up.
-
-- The core idea of this project is setting stuff up such that it is easier to
-  remove stuff than add it; start with batteries include it, expose the
-  internals (looking at you react-scripts 😜) and give some helpful scripts to
-  make removing them a little easier.
-- Rollup vs Webpack. I've tried generating libraries with Webpack before but
-  they had two main problems; it produces much bigger bundles and it doesn't
-  generate ES modules. The rollup ecosystem is smaller, and the docs can be
-  overwhelming, but everything is there
-- Keep the main src/index file free of JSX, and instead use it to be a root file
-  for other source files. Avoid changing the extension of this file to `tsx`.
-  Instead, add `export * from './some/path/to/file'` (where
-  src/some/path/to/file.tsx can contain JSX) to src/index.ts
 - If you want to bundle a package you're importing, stick it in dependencies. If
   you'd like the user of your library to install it as a peer dependency,
   install it as a peer dependency
@@ -121,12 +104,3 @@ set up.
     global names (`window.$` might be used in `import ... from "jquery"`). For
     web builds to work, you'll have to add the correct global name to the
     knownDependencyNames map in rollup.config.js
-- Avoid the PropTypes library; use TypeScript types instead; if you're new to
-  React in TypeScript, check out the
-  [React TypeScript cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet)
-- TypeScript configs are a hassle to configure for libraries. There's a
-  tsconfig.eslint.json file at the base of this project, which extends the build
-  tsconfig with settings to enable better linting
-- The rollup config currently uses the old package for some rollup plugins. I
-  tried to upgrade this but it opened a pandora's box of challenges that I've so
-  far been unable to solve (would welcome help!)
