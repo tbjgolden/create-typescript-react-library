@@ -1,9 +1,16 @@
 import { PersistentState } from './utils'
+import { spawn } from 'child_process'
 
 const state = new PersistentState()
 
+// Storybook
 if (state.get().hasAddedReact) {
-  console.log('Starting storybook...')
-  require('@storybook/react/dist/server')
-} else {
+  ;(() => {
+    try {
+      require('@storybook/react/dist/server')
+    } catch (er) {}
+  })()
 }
+
+// Jest
+spawn('yarn', ['run', 'test:src', '--watch'], { stdio: 'inherit' })
