@@ -3,7 +3,6 @@ import path from 'path'
 import mkdirp from 'mkdirp'
 import { spawn } from 'child_process'
 import prettier from 'prettier'
-import { cosmiconfigSync } from 'cosmiconfig'
 
 export type State = {
   lastSync: number
