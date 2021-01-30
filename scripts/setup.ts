@@ -172,6 +172,13 @@ const setup = async () => {
     '276768723349764835332642': year
   }
 
+  const replacerRegex = new RegExp(
+    Object.keys(mapper)
+      .map((key) => key.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'))
+      .join('|'),
+    'g'
+  )
+
   const { confirm } = await prompt<{ confirm: boolean }>({
     type: 'confirm',
     name: 'confirm',
@@ -181,9 +188,7 @@ const setup = async () => {
       Project Name:        ${JSON.stringify(projectName)}
       Variable Name:       ${JSON.stringify(variableName)}
       Github Username:     ${JSON.stringify(githubUsername)}
-      Author Name:         ${
-        authorName ? JSON.stringify(authorName) : '(Field will be removed)'
-      }
+      Author Name:         ${JSON.stringify(authorName)}
       Author Email:        ${
         authorEmail ? JSON.stringify(authorEmail) : '(Field will be removed)'
       }
@@ -194,16 +199,10 @@ const setup = async () => {
   })
 
   if (confirm) {
-    mutatePackageJSON({})
-
-    const blacklist = new Set([
-      'build',
-      'compiled',
-      'coverage',
-      'dist',
-      'node_modules',
-      '.git'
-    ])
+    console.log('Starting find and replace')
+    const blacklist = new Set(
+      'build|compiled|coverage|dist|node_modules|.git'.split('|')
+    )
 
     const walkSync = (
       dir: string,
@@ -230,7 +229,49 @@ const setup = async () => {
       }
     })
 
-    console.log(files, mapper)
+    const results = (
+      await Promise.all(
+        files.map(
+          async (file): Promise<string | null> => {
+            return new Promise<string | null>((resolve, reject) => {
+              fs.readFile(file, { encoding: 'utf8' }, (err, str) => {
+                if (err) return reject(err)
+                fs.writeFile(
+                  file,
+                  str.replace(
+                    replacerRegex,
+                    (str: string): string => mapper[str as keyof typeof mapper]
+                  ),
+                  (err) => {
+                    if (err) return reject(err)
+                    resolve(null)
+                  }
+                )
+              })
+            }).catch(() => file)
+          }
+        )
+      )
+    ).filter((result) => result !== null) as string[]
+
+    if (results.length > 0) {
+      console.log('Could not find and replace in files:')
+      results.forEach((file: string) => {
+        console.log(` - "${path.relative(path.join(__dirname, '..'), file)}"`)
+      })
+    }
+    console.log('Finished find and replace')
+
+    await mutatePackageJSON({
+      author: {
+        name: authorName,
+        ...(authorEmail ? { email: authorEmail } : {}),
+        url: `https://github.com/${githubUsername}`
+      }
+    })
+    console.log('Updated package.json')
+  } else {
+    console.log('\nSetup cancelled.')
   }
 }
 
