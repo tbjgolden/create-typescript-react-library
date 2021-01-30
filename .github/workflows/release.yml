@@ -21,6 +21,12 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Install dependencies
+        run: yarn test
+
+      - name: Get test coverage
+        run: yarn coverage
+
       - name: Create builds
         run: yarn build
 

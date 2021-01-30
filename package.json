@@ -7,7 +7,8 @@
   "umd": "dist/gocvmmeyaahgakggbjwmcmif.umd.js",
   "typings": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "coverage"
   ],
   "author": {
     "name": "zkhshfmpcvllotfgoigdwyrr",
@@ -26,12 +27,13 @@
     "check:types": "tsc -p tsconfig.build.json --noEmit",
     "clean": "run-p clean:*",
     "clean:compiled": "del compiled",
-    "clean:coverage": "del coverage",
+    "clean:coverage": "jest --config ./config/jest/config.src.ts",
     "clean:dist": "del dist",
     "compile": "tsc -p tsconfig.build.json",
+    "coverage": "run-s test:src",
     "format": "prettier --write \"**/*.{js,json,ts,tsx,md}\"",
     "lint": "eslint . --ext .ts,.tsx",
-    "postinstall": "npx patch-package",
+    "postinstall": "patch-package",
     "postbundle": "del compiled",
     "start": "ts-node scripts/start.ts",
     "test": "run-s check:* lint build test:*",

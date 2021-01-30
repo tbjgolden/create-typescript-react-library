@@ -217,7 +217,10 @@ const setup = async () => {
         # \`gocvmmeyaahgakggbjwmcmif\`
 
         [![npm version](https://img.shields.io/npm/v/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
-        [![npm downloads](https://img.shields.io/npm/dm/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
+        [![test coverage](https://img.shields.io/badge/dynamic/json?style=flat-square&color=brightgreen&label=coverage&query=%24.total.branches.pct&suffix=%25&url=https%3A%2F%2Funpkg.com%2F${encodeURIComponent(
+          projectName
+        )}%2Fcoverage%2Fcoverage-summary.json)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
+        [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif/Release?style=flat-square)](https://github.com/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif/actions?query=workflow%3ARelease)
 
         ${
           projectDescription
