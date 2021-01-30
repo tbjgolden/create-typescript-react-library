@@ -120,7 +120,6 @@ export const installDependencies = async (
   }
 }
 
-const explorerSync = cosmiconfigSync('prettier')
 const packageJSONPath = path.join(__dirname, '../package.json')
 export const mutatePackageJSON = async (
   diffs: Record<string, unknown>
@@ -143,8 +142,8 @@ export const mutatePackageJSON = async (
   fs.writeFileSync(
     packageJSONPath,
     prettier.format(JSON.stringify(json, null, 2), {
-      ...(explorerSync.search(path.join(__dirname, '../config'))?.config ?? {}),
-      parser: 'json'
+      ...(json?.prettier ?? {}),
+      parser: 'json-stringify'
     })
   )
 }

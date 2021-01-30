@@ -6,7 +6,9 @@
   "module": "dist/gocvmmeyaahgakggbjwmcmif.esm.js",
   "umd": "dist/gocvmmeyaahgakggbjwmcmif.umd.js",
   "typings": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "author": {
     "name": "zkhshfmpcvllotfgoigdwyrr",
     "email": "fnrnhzcp@gohyrqjsyole.jv",
@@ -45,7 +47,9 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "keywords": ["typescript"],
+  "keywords": [
+    "typescript"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "github:xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif/issues"
@@ -106,7 +110,9 @@
     "typescript": "4.1.3"
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "prettier": {
     "semi": false,
