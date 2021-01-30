@@ -209,6 +209,57 @@ const setup = async () => {
   })
 
   if (confirm) {
+    console.log('Replacing starter readme with library readme')
+    fs.writeFileSync(
+      path.join(__dirname, '../README.md'),
+      dedent(
+        `
+        # \`gocvmmeyaahgakggbjwmcmif\`
+
+        [![npm version](https://img.shields.io/npm/v/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
+        [![npm downloads](https://img.shields.io/npm/dm/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
+
+        ${
+          projectDescription
+            ? `> **${projectDescription.replace(
+                /[!"#$%&'()*+,-./:;<=>?@[\\\]\^\_\`\{\|\}\~]/g,
+                '\\$&'
+              )}**`
+            : ''
+        }
+
+        ## Installation
+
+        \`\`\`sh
+        npm install gocvmmeyaahgakggbjwmcmif --save
+        # yarn add gocvmmeyaahgakggbjwmcmif
+        \`\`\`
+
+        Alternatively, there are also client web builds available:
+
+        <!-- IMPORTANT: Do not delete or change the comments in the code block below -->
+
+        \`\`\`html
+        <!-- Dependencies -->
+
+        <!-- window.Gocvmmeyaahgakggbjwmcmif -->
+        <script src="https://unpkg.com/gocvmmeyaahgakggbjwmcmif/dist/gocvmmeyaahgakggbjwmcmif.umd.js"></script>
+        \`\`\`
+
+        ## Documentation
+
+        - [\`Docs\`](docs)
+        - [\`API\`](docs/api)
+
+        ## License
+
+        MIT
+
+        <!-- Original starter readme: https://github.com/tbjgolden/typescript-library-starter -->
+        ` + '\n'
+      )
+    )
+
     console.log('Starting find and replace')
     const blacklist = new Set(
       'build|compiled|coverage|dist|node_modules|.git'.split('|')
