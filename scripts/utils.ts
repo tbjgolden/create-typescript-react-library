@@ -2,6 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import mkdirp from 'mkdirp'
 import { spawn } from 'child_process'
+import prettier from 'prettier'
+import { cosmiconfigSync } from 'cosmiconfig'
 
 export type State = {
   lastSync: number
@@ -25,7 +27,7 @@ export class PersistentState {
     let _state: Partial<State> | null = null
     try {
       _state = JSON.parse(fs.readFileSync(stateFilePath, 'utf8')) ?? null
-    } catch (e) {}
+    } catch {}
     this._state = {
       ...defaults,
       ...(_state ?? {})
@@ -116,4 +118,33 @@ export const installDependencies = async (
       })
     })
   }
+}
+
+const explorerSync = cosmiconfigSync('prettier')
+const packageJSONPath = path.join(__dirname, '../package.json')
+export const mutatePackageJSON = async (
+  diffs: Record<string, unknown>
+): Promise<void> => {
+  let json = null
+  try {
+    json = JSON.parse(fs.readFileSync(packageJSONPath, 'utf8'))
+  } catch {}
+
+  if (json === null) throw new Error('No package.json found')
+
+  for (const [k, v] of Object.entries(diffs)) {
+    if (typeof v === 'function') {
+      json[k] = v(json[k])
+    } else {
+      json[k] = v
+    }
+  }
+
+  fs.writeFileSync(
+    packageJSONPath,
+    prettier.format(JSON.stringify(json, null, 2), {
+      ...(explorerSync.search(path.join(__dirname, '../config'))?.config ?? {}),
+      parser: 'json'
+    })
+  )
 }

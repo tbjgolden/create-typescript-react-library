@@ -1,6 +1,5 @@
 # Docs
 
-Table of Contents
-=================
+# Table of Contents
 
-  * [API](api)
+- [API](api)

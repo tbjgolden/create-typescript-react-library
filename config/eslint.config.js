@@ -1,4 +1,4 @@
-let state
+let state = {}
 try {
   state = require('./.state.json')
 } catch (err) {

@@ -1,11 +1,6 @@
-#!/usr/bin/env node
-
-// this script is zero dependencies
-// it can be run directly with `node scripts/setup.js`
-
-const fs = require('fs')
-const path = require('path')
-const readline = require('readline')
+import fs from 'fs'
+import path from 'path'
+import readline from 'readline'
 
 const projectRoot = path.join(__dirname, '..')
 
@@ -73,7 +68,7 @@ let aliases = null
 
 try {
   aliases = require('../.aliases.json')
-} catch (err) {}
+} catch {}
 
 if (aliases) {
   const blacklist = new Set([
@@ -108,10 +103,6 @@ if (aliases) {
     }
   })
 
-  const replacers = [[aliases.Year, `${new Date().getFullYear()}`]]
-  delete aliases.Year
-
-  const keys = Object.keys(aliases)
   askAll(
     keys.map((alias) => ({
       question: `==============================\n${alias}${
@@ -139,12 +130,6 @@ if (aliases) {
         fs.readFileSync(file, 'utf8').replace(new RegExp(regex, 'g'), replacer)
       )
     })
-
-    console.log('...removing the alias file...')
-    fs.unlinkSync(path.join(projectRoot, '.aliases.json'))
-
-    console.log('...removing the setup script file...')
-    fs.unlinkSync(path.join(projectRoot, 'scripts/setup.js'))
 
     console.log('...removing setup step from package.json...')
     const pkgJson = require('../package.json')

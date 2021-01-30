@@ -8,7 +8,7 @@ if (state.get().hasAddedReact) {
   ;(() => {
     try {
       require('@storybook/react/dist/server')
-    } catch (er) {}
+    } catch {}
   })()
 }
 

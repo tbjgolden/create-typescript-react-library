@@ -1,9 +1,0 @@
-{
-  "prettier.configPath": "./config/prettier.config.js",
-  "prettier.ignorePath": "./config/.prettierignore",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "javascript.format.enable": false,
-  "search.exclude": {
-    "**/node_modules": false
-  }
-}
