@@ -2,62 +2,40 @@
 
 This starter enables simple creation of libraries using TypeScript.
 
-It can be used for libraries either **_with or without_** React/JSX.
-
-It includes automatic API documentation generation and tools for development.
-
-> Inspired by the best bits of `alexjoverm/typescript-library-starter` and
-> `tanem/generator-typescript-react-lib`.
-
 ## Features
 
-from `tanem/generator-typescript-react-lib`:
-
-- [x] Generates CommonJS, ES module, and Universal Module Definition bundles via
-      Rollup.
-- [x] Tests bundles via Jest.
-- [x] Generates Typescript type declarations for publishing.
-- [x] Outputs, strips, or wraps PropTypes declarations according to bundle type.
-- [x] Makes Universal Module Definition bundles available via unpkg.
-
-from `alexjoverm/typescript-library-starter`
-
-- [x] Code of conduct
-- [x] Contributing boilerplate
-
-from me
-
-- [x] interactive setup script which asks the basics to help get you up and
-      running
-- [x] version controlled engines like node and yarn with asdf
-- [x] Storybook integration
-- [x] Semantic releases
+- [x] rollup for smallest bundles
+- [x] tests with jest (+coverage)
+- [x] generates type declarations
+- [x] esm, cjs and umd (script tag) exports
+- [x] admin (code of conduct, contributing instructions)
+- [x] interactive setup script
+- [x] automated semantic releases
+- [x] automated api docs generation
+- [x] add react with a single command
+- [x] context-dependent start script (tdd jest, plus storybook for react)
 
 ### Requirements
 
-`curl` `git` `fish` `node` `yarn`
+- all of: `curl` `git` `node` `yarn`
+- one of: `sh` `bash` `zsh`
 
 ## Setup
 
 ### Step 1. Local setup
 
 ```sh
-# Clone this directory locally, and cd into it
-git clone https://github.com/tbjgolden/typescript-library-starter.git <yourdir>
+# clone
+git clone --depth 1 https://github.com/tbjgolden/typescript-library-starter.git <yourdir>
 cd <yourdir>
-
-# Clear the git history from the starter
-rm -rf .git
-
-# Start the custom setup script, and install dependencies
+# setup
 yarn
-
-# Check everything is set up correctly
-yarn test
-
-# Finally, let's initialize a new git repository
+npx ts-node ./scripts/setup.ts
+# re-init history
+rm -rf .git
 git init
 git add -A
+# create repo and push changes
 git commit -m 'Initial commit' --no-verify
 git remote add origin https://github.com/<user>/<repo>.git
 git push -u origin main
