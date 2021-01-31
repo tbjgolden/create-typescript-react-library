@@ -209,138 +209,139 @@ const setup = async () => {
     )
   })
 
-  if (confirm) {
-    console.log('Replacing starter readme with library readme')
-    fs.writeFileSync(
-      path.join(__dirname, '../README.md'),
-      dedent(
-        `
-        # \`gocvmmeyaahgakggbjwmcmif\`
-
-        [![npm version](https://img.shields.io/npm/v/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
-        [![test coverage](https://img.shields.io/badge/dynamic/json?style=flat-square&color=brightgreen&label=coverage&query=%24.total.branches.pct&suffix=%25&url=https%3A%2F%2Funpkg.com%2F${encodeURIComponent(
-          projectName
-        )}%2Fcoverage%2Fcoverage-summary.json)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
-        [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif/Release?style=flat-square)](https://github.com/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif/actions?query=workflow%3ARelease)
-
-        ${
-          projectDescription
-            ? `> **${projectDescription.replace(
-                /[!"#$%&'()*+,./:;<=>?@\-\[\\\]\^\_\`\{\|\}\~]/g,
-                '\\$&'
-              )}**`
-            : ''
-        }
-
-        ## Installation
-
-        \`\`\`sh
-        npm install gocvmmeyaahgakggbjwmcmif --save
-        # yarn add gocvmmeyaahgakggbjwmcmif
-        \`\`\`
-
-        Alternatively, there are also client web builds available:
-
-        <!-- IMPORTANT: Do not delete or change the comments in the code block below -->
-
-        \`\`\`html
-        <!-- Dependencies -->
-
-        <!-- window.Gocvmmeyaahgakggbjwmcmif -->
-        <script src="https://unpkg.com/gocvmmeyaahgakggbjwmcmif/dist/gocvmmeyaahgakggbjwmcmif.umd.js"></script>
-        \`\`\`
-
-        ## Documentation
-
-        - [\`Docs\`](docs)
-        - [\`API\`](docs/api)
-
-        ## License
-
-        MIT
-
-        <!-- Original starter readme: https://github.com/tbjgolden/create-typescript-react-library -->
-        ` + '\n'
-      )
-    )
-
-    console.log('Starting find and replace')
-    const blacklist = new Set(
-      'build|compiled|coverage|dist|node_modules|.git'.split('|')
-    )
-
-    const walkSync = (
-      dir: string,
-      callback: (filepath: string, stats: fs.Stats) => void
-    ): void => {
-      const files = fs.readdirSync(dir)
-      files.forEach((file) => {
-        if (!blacklist.has(file)) {
-          const filepath = path.join(dir, file)
-          const stats = fs.statSync(filepath)
-          if (stats.isDirectory()) {
-            walkSync(filepath, callback)
-          } else if (stats.isFile() && !blacklist.has(file)) {
-            callback(filepath, stats)
-          }
-        }
-      })
-    }
-
-    const files: string[] = []
-    walkSync(path.join(__dirname, '..'), (filepath, stats) => {
-      if (stats.size < 50000) {
-        files.push(filepath)
-      }
-    })
-
-    const results = (
-      await Promise.all(
-        files.map(
-          async (file): Promise<string | null> => {
-            return new Promise<string | null>((resolve, reject) => {
-              fs.readFile(file, { encoding: 'utf8' }, (err, str) => {
-                if (err) return reject(err)
-                fs.writeFile(
-                  file,
-                  str.replace(
-                    replacerRegex,
-                    (str: string): string => mapper[str as keyof typeof mapper]
-                  ),
-                  (err) => {
-                    if (err) return reject(err)
-                    resolve(null)
-                  }
-                )
-              })
-            }).catch(() => file)
-          }
-        )
-      )
-    ).filter((result) => result !== null) as string[]
-
-    if (results.length > 0) {
-      console.log('Could not find and replace in files:')
-      results.forEach((file: string) => {
-        console.log(` - "${path.relative(path.join(__dirname, '..'), file)}"`)
-      })
-    }
-    console.log('Finished find and replace')
-
-    await mutatePackageJSON({
-      author: {
-        name: authorName,
-        ...(authorEmail ? { email: authorEmail } : {}),
-        url: `https://github.com/${githubUsername}`
-      }
-    })
-    console.log('Updated package.json')
-
-    await del(path.join(__dirname, '../config/meta'))
-    console.log('Removed create-typescript-react-library logic')
-  } else {
+  if (!confirm) {
     console.log('\nSetup cancelled.')
+    process.exit(0)
   }
+
+  console.log('Replacing starter readme with library readme')
+  fs.writeFileSync(
+    path.join(__dirname, '../README.md'),
+    dedent(
+      `
+      # \`gocvmmeyaahgakggbjwmcmif\`
+
+      [![npm version](https://img.shields.io/npm/v/gocvmmeyaahgakggbjwmcmif.svg?style=flat-square)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
+      [![test coverage](https://img.shields.io/badge/dynamic/json?style=flat-square&color=brightgreen&label=coverage&query=%24.total.branches.pct&suffix=%25&url=https%3A%2F%2Funpkg.com%2F${encodeURIComponent(
+        projectName
+      )}%2Fcoverage%2Fcoverage-summary.json)](https://www.npmjs.com/package/gocvmmeyaahgakggbjwmcmif)
+      [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif/Release?style=flat-square)](https://github.com/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif/actions?query=workflow%3ARelease)
+
+      ${
+        projectDescription
+          ? `> **${projectDescription.replace(
+              /[!"#$%&'()*+,./:;<=>?@\-\[\\\]\^\_\`\{\|\}\~]/g,
+              '\\$&'
+            )}**`
+          : ''
+      }
+
+      ## Installation
+
+      \`\`\`sh
+      npm install gocvmmeyaahgakggbjwmcmif --save
+      # yarn add gocvmmeyaahgakggbjwmcmif
+      \`\`\`
+
+      Alternatively, there are also client web builds available:
+
+      <!-- IMPORTANT: Do not delete or change the comments in the code block below -->
+
+      \`\`\`html
+      <!-- Dependencies -->
+
+      <!-- window.Gocvmmeyaahgakggbjwmcmif -->
+      <script src="https://unpkg.com/gocvmmeyaahgakggbjwmcmif/dist/gocvmmeyaahgakggbjwmcmif.umd.js"></script>
+      \`\`\`
+
+      ## Documentation
+
+      - [\`Docs\`](docs)
+      - [\`API\`](docs/api)
+
+      ## License
+
+      MIT
+
+      <!-- Original starter readme: https://github.com/tbjgolden/create-typescript-react-library -->
+      ` + '\n'
+    )
+  )
+
+  console.log('Starting find and replace')
+  const blacklist = new Set(
+    'build|compiled|coverage|dist|node_modules|.git'.split('|')
+  )
+
+  const walkSync = (
+    dir: string,
+    callback: (filepath: string, stats: fs.Stats) => void
+  ): void => {
+    const files = fs.readdirSync(dir)
+    files.forEach((file) => {
+      if (!blacklist.has(file)) {
+        const filepath = path.join(dir, file)
+        const stats = fs.statSync(filepath)
+        if (stats.isDirectory()) {
+          walkSync(filepath, callback)
+        } else if (stats.isFile() && !blacklist.has(file)) {
+          callback(filepath, stats)
+        }
+      }
+    })
+  }
+
+  const files: string[] = []
+  walkSync(path.join(__dirname, '..'), (filepath, stats) => {
+    if (stats.size < 50000) {
+      files.push(filepath)
+    }
+  })
+
+  const results = (
+    await Promise.all(
+      files.map(
+        async (file): Promise<string | null> => {
+          return new Promise<string | null>((resolve, reject) => {
+            fs.readFile(file, { encoding: 'utf8' }, (err, str) => {
+              if (err) return reject(err)
+              fs.writeFile(
+                file,
+                str.replace(
+                  replacerRegex,
+                  (str: string): string => mapper[str as keyof typeof mapper]
+                ),
+                (err) => {
+                  if (err) return reject(err)
+                  resolve(null)
+                }
+              )
+            })
+          }).catch(() => file)
+        }
+      )
+    )
+  ).filter((result) => result !== null) as string[]
+
+  if (results.length > 0) {
+    console.log('Could not find and replace in files:')
+    results.forEach((file: string) => {
+      console.log(` - "${path.relative(path.join(__dirname, '..'), file)}"`)
+    })
+  }
+  console.log('Finished find and replace')
+
+  await mutatePackageJSON({
+    author: {
+      name: authorName,
+      ...(authorEmail ? { email: authorEmail } : {}),
+      url: `https://github.com/${githubUsername}`
+    }
+  })
+  console.log('Updated package.json')
+
+  await del(path.join(__dirname, '../config/meta'))
+  console.log('Removed create-typescript-react-library logic')
 }
 
 if (require.main === module) {
