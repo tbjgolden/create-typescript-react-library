@@ -23,7 +23,8 @@ jobs:
           if [ -f ./config/meta/ctrl.json ]; then
               rm ./package.json
               cp ./config/meta/ctrl.json ./package.json
-              npm publish
+              npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+              npm publish --ignore-scripts
           else
               yarn install --frozen-lockfile
               yarn test
@@ -33,4 +34,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
