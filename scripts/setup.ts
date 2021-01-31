@@ -3,6 +3,7 @@ import path from 'path'
 import { prompt } from 'enquirer'
 import fg from 'fast-glob'
 import dedent from 'dedent'
+import del from 'del'
 import { mutatePackageJSON } from './utils'
 
 const trimObject = (
@@ -86,7 +87,7 @@ const setup = async () => {
     template:
       dedent(`{
         "name": "\${projectName${
-          initialProjectDir === 'typescript-library-starter'
+          initialProjectDir === 'create-typescript-react-library'
             ? ''
             : `:${initialProjectDir}`
         }}",
@@ -258,7 +259,7 @@ const setup = async () => {
 
         MIT
 
-        <!-- Original starter readme: https://github.com/tbjgolden/typescript-library-starter -->
+        <!-- Original starter readme: https://github.com/tbjgolden/create-typescript-react-library -->
         ` + '\n'
       )
     )
@@ -334,6 +335,9 @@ const setup = async () => {
       }
     })
     console.log('Updated package.json')
+
+    await del(path.join(__dirname, '../config/meta'))
+    console.log('Removed create-typescript-react-library logic')
   } else {
     console.log('\nSetup cancelled.')
   }

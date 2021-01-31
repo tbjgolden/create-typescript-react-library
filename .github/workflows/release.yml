@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   release:
@@ -18,19 +18,41 @@ jobs:
         with:
           node-version: 12
 
-      - name: Install dependencies
+      # META
+
+      - name: Check for meta logic
+        run: |
+          if [ -f ./config/meta/ctrl.json ]; then
+              META=true
+          else
+              META=false
+          fi
+
+      - if: env.META == 'true'
+        name: release meta
+        run: |
+          rm ./package.json
+          cp ./config/meta/ctrl.json ./package.json
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # LIBRARY
+
+      - if: env.META == 'false'
+        name: install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Install dependencies
+      - if: env.META == 'false'
+        name: check and test project
         run: yarn test
 
-      - name: Get test coverage
-        run: yarn coverage
-
-      - name: Create builds
+      - if: env.META == 'false'
+        name: build project
         run: yarn build
 
-      - name: Release
+      - if: env.META == 'false'
+        name: semantic release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

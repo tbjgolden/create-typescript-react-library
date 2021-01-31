@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const { execSync } = require('child_process')
+const { execSync, spawn } = require('child_process')
 const readline = require('readline')
 const fs = require('fs')
 const path = require('path')
@@ -40,24 +40,26 @@ const run = async () => {
   }
 
   execSync(
-    `git clone --depth 1 https://github.com/tbjgolden/typescript-library-starter.git '${answer}'`
+    `git clone --depth 1 https://github.com/tbjgolden/create-typescript-react-library.git '${answer}'`
   )
   execSync(`yarn`, { cwd: newDir })
-  execSync(`./node_modules/.bin/ts-node ./scripts/setup.ts`, { cwd: newDir })
+
+  const installer = spawn(
+    './node_modules/.bin/ts-node',
+    ['./scripts/setup.ts'],
+    {
+      cwd: newDir,
+      stdio: 'inherit'
+    }
+  )
+
+  installer.on('close', (code) => {
+    process.exit(code)
+  })
 }
 
 if (require.main === module) {
-  run(process.argv.slice(2))
+  run(...process.argv.slice(2))
 }
 
 module.exports = run
-
-/*
-# do this in setup.ts
-rm -rf .git
-git init
-git add -A
-git commit -m 'Initial commit' --no-verify
-git remote add origin https://github.com/<user>/<repo>.git
-git push -u origin main
-*/

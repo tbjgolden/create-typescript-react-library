@@ -67,7 +67,7 @@ export const addScriptDependency = (...scripts: string[]): void => {
     const readme = fs.readFileSync(readmeFilePath, 'utf8')
     const readmeMatch = readme.match(codeRegex)
     if (readmeMatch === null) {
-      if (readme.includes('typescript-library-starter')) {
+      if (readme.includes('create-typescript-react-library')) {
         console.error(
           `Cannot fix readme - the setup script needs to be run first`
         )

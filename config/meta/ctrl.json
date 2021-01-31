@@ -1,0 +1,16 @@
+{
+  "name": "create-typescript-react-library",
+  "version": "1.0.0-alpha",
+  "keywords": ["create", "typescript", "react", "library"],
+  "description": "🧰 Tool for building low-maintenance, flexible TypeScript libraries. ",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tbjgolden/create-typescript-react-library"
+  },
+  "author": "Tom Golden <github@tbjgolden.com>",
+  "license": "MIT",
+  "bin": {
+    "create-typescript-react-library": "./config/meta/create.js"
+  },
+  "files": ["config/meta"]
+}

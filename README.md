@@ -1,4 +1,4 @@
-# `typescript-library-starter`
+# `create-typescript-react-library`
 
 This starter enables simple creation of libraries using TypeScript.
 
@@ -26,7 +26,7 @@ This starter enables simple creation of libraries using TypeScript.
 
 ```sh
 # clone
-git clone --depth 1 https://github.com/tbjgolden/typescript-library-starter.git <yourdir>
+git clone --depth 1 https://github.com/tbjgolden/create-typescript-react-library.git <yourdir>
 cd <yourdir>
 # setup
 yarn

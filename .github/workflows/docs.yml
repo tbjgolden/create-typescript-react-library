@@ -3,7 +3,7 @@ name: Generate Docs
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - '.github/workflows/docs.yml'
       - 'src/**'
@@ -21,7 +21,7 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - run: npx typedoc --mode file --out docs/api --theme markdown --readme none src/index.ts
+      - run: yarn typedoc
 
       - name: Commit files
         run: |
@@ -31,7 +31,7 @@ jobs:
           git commit -m "ci: Autogenerate API Docs"
 
       - name: Push changes
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${'${{ secrets.GITHUB_TOKEN }}'}
