@@ -4,6 +4,6 @@ module.exports = {
   ...srcConfig,
   collectCoverage: false,
   moduleNameMapper: {
-    '^../src$': `<rootDir>/dist/gocvmmeyaahgakggbjwmcmif.esm.js`
+    '^../src$': `<rootDir>/dist/test.esm.js`
   }
 }

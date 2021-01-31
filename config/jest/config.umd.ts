@@ -4,6 +4,6 @@ export default {
   ...srcConfig,
   collectCoverage: false,
   moduleNameMapper: {
-    '^../src$': `<rootDir>/dist/gocvmmeyaahgakggbjwmcmif.umd.js`
+    '^../src$': `<rootDir>/dist/test.umd.js`
   }
 }

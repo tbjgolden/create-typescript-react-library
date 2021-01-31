@@ -3265,6 +3265,13 @@ cssstyle@^2.2.0:
   dependencies:
     cssom "~0.3.6"
 
+ctrl-scripts@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/ctrl-scripts/-/ctrl-scripts-0.0.5.tgz#7d15eb442e00b01cf7b33298f806a738c18f4859"
+  integrity sha512-wyx7CBr6+SdpX5vE2O+za58HuPvWFE8svmzgeqKQ0mqLJhnyNvBUYAV2iTwYtkQWqbqghayBQyoZTsbyA4zIhQ==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
 cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"

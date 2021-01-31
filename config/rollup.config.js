@@ -129,7 +129,7 @@ export default [
         }),
         {}
       ),
-      name: 'Gocvmmeyaahgakggbjwmcmif',
+      name: 'Test',
       sourcemap: true
     },
     plugins: getPlugins('UMD_PROD')

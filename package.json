@@ -1,26 +1,27 @@
 {
-  "name": "gocvmmeyaahgakggbjwmcmif",
+  "name": "test",
   "version": "0.0.0-semantically-released",
-  "description": "rwmgkcxafpdrkuvtfszrfvwv",
+  "description": "test",
   "main": "dist/index.js",
-  "module": "dist/gocvmmeyaahgakggbjwmcmif.esm.js",
-  "umd": "dist/gocvmmeyaahgakggbjwmcmif.umd.js",
+  "module": "dist/test.esm.js",
+  "umd": "dist/test.umd.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "coverage"
   ],
   "author": {
-    "name": "zkhshfmpcvllotfgoigdwyrr",
-    "email": "fnrnhzcp@gohyrqjsyole.jv",
-    "url": "https://github.com/xrdnwftmsmirdshgpfoyocjh"
+    "name": "t",
+    "email": "test@test.com",
+    "url": "https://github.com/tbjgolden"
   },
-  "homepage": "https://github.com/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif",
+  "homepage": "https://github.com/tbjgolden/test",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif.git"
+    "url": "https://github.com/tbjgolden/test.git"
   },
   "scripts": {
+    "x": "ctrl x",
     "build": "run-s clean compile bundle",
     "bundle": "rollup -c ./config/rollup.config.js",
     "check:format": "prettier --list-different \"**/*.{js,json,ts,tsx,md}\"",
@@ -54,11 +55,12 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "github:xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif/issues"
+    "url": "github:tbjgolden/test/issues"
   },
   "peerDependencies": {},
   "dependencies": {
-    "@babel/runtime": "^7.12.5"
+    "@babel/runtime": "^7.12.5",
+    "ctrl-scripts": "^0.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
