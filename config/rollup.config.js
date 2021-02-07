@@ -72,11 +72,17 @@ const getPlugins = (bundleType) => [
     })
 ]
 
+const license =
+  dedent(`
+    /*! @license Gocvmmeyaahgakggbjwmcmif - MIT License - zkhshfmpcvllotfgoigdwyrr (fnrnhzcp@gohyrqjsyole.jv) */
+  `) + '\n'
+
 export default [
   {
     input: './compiled/index.js',
     external: getExternal('CJS_DEV'),
     output: {
+      banner: license,
       file: pkg.main,
       format: 'cjs',
       sourcemap: true
@@ -87,6 +93,7 @@ export default [
     input: './compiled/index.js',
     external: getExternal('ES'),
     output: {
+      banner: license,
       file: pkg.module,
       format: 'es',
       sourcemap: true
@@ -97,6 +104,7 @@ export default [
     input: './compiled/index.js',
     external: getExternal('UMD_PROD'),
     output: {
+      banner: license,
       file: pkg.umd,
       format: 'umd',
       globals: Object.keys(pkg.peerDependencies || {}).reduce(
@@ -112,17 +120,16 @@ export default [
                 )
                 .join('')
               console.warn(
-                dedent`
-                Blindly guessing that the browser global (i.e. window.<NAME>) for npm package...
-                  "${npmDependency}"
-                ...is...
-                  "${pascal}"
+                dedent(`
+                  Blindly guessing that the browser global (i.e. window.<NAME>) for npm package...
+                    "${npmDependency}"
+                  ...is...
+                    "${pascal}"
 
-                To fix this message
-                  '${npmDependency}': '<NAME>',
-                to 'browserGlobals' in rollup.config.js
-
-                `
+                  To fix this message
+                    '${npmDependency}': '<NAME>',
+                  to 'browserGlobals' in rollup.config.js
+                `)
               )
               return pascal
             })()

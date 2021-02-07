@@ -1,6 +1,6 @@
 {
   "name": "gocvmmeyaahgakggbjwmcmif",
-  "version": "0.0.0-semantically-released",
+  "version": "0.0.0-development",
   "description": "rwmgkcxafpdrkuvtfszrfvwv",
   "main": "dist/index.js",
   "module": "dist/gocvmmeyaahgakggbjwmcmif.esm.js",
@@ -21,31 +21,18 @@
     "url": "https://github.com/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif.git"
   },
   "scripts": {
-    "build": "run-s clean compile bundle",
-    "bundle": "rollup -c ./config/rollup.config.js",
-    "check:format": "prettier --list-different \"**/*.{js,json,ts,tsx,md}\"",
-    "check:types": "tsc -p tsconfig.build.json --noEmit",
-    "clean": "run-p clean:*",
-    "clean:compiled": "del compiled",
-    "clean:coverage": "jest --config ./config/jest/config.src.ts",
-    "clean:dist": "del dist",
+    "build": "yarn run clean && yarn run compile && rollup -c ./config/rollup.config.js && del compiled",
+    "clean": "concurrently \"del compiled\" \"del coverage\" \"del dist\"",
     "compile": "tsc -p tsconfig.build.json",
-    "coverage": "run-s test:src",
-    "format": "prettier --write \"**/*.{js,json,ts,tsx,md}\"",
+    "coverage": "jest --config ./config/jest/config.src.ts",
     "lint": "eslint . --ext .ts,.tsx",
-    "postbundle": "del compiled",
-    "start": "ts-node scripts/start.ts",
-    "test": "run-s check:* lint build test:*",
-    "test:cjs": "jest --config ./config/jest/config.cjs.ts",
-    "test:es": "jest --config ./config/jest/config.es.ts",
-    "test:src": "jest --config ./config/jest/config.src.ts",
-    "test:umdprod": "jest --config ./config/jest/config.umd.ts",
-    "typedoc": "typedoc --out docs/api --theme markdown --readme none --entryPoints \"src/index.ts*\"",
-    "semantic-release": "semantic-release"
+    "start": "ctrl start",
+    "test": "concurrently \"yarn:lint\" \"yarn:build\" && concurrently \"jest --config ./config/jest/config.cjs.ts\" \"jest --config ./config/jest/config.es.ts\" \"jest --config ./config/jest/config.src.ts\" \"jest --config ./config/jest/config.umd.ts\""
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "pretty-quick --staged"
     }
   },
   "keywords": [
@@ -80,8 +67,10 @@
     "babel-loader": "^8.2.2",
     "classnames": "^2.2.6",
     "commitizen": "^4.2.3",
+    "concurrently": "^5.3.0",
     "cp-cli": "2.0.0",
     "cross-env": "7.0.3",
+    "ctrl-scripts": "^0.0.10",
     "dedent": "^0.7.0",
     "del-cli": "3.0.1",
     "enquirer": "^2.3.6",
@@ -93,8 +82,8 @@
     "husky": "^4.3.8",
     "jest": "26.6.3",
     "mkdirp": "^1.0.4",
-    "npm-run-all": "4.1.5",
     "prettier": "2.2.1",
+    "pretty-quick": "^3.1.0",
     "regenerator-runtime": "0.13.7",
     "rollup": "2.38.0",
     "rollup-plugin-filesize": "9.1.0",

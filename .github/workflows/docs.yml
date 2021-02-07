@@ -22,7 +22,9 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - run: yarn typedoc
+      - run:
+          typedoc --out docs/api --theme markdown --readme none --entryPoints
+          "src/index.ts*"
 
       - name: Commit files
         run: |

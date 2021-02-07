@@ -30,7 +30,7 @@ git clone --depth 1 https://github.com/tbjgolden/create-typescript-react-library
 cd <yourdir>
 # setup
 yarn
-npx ts-node ./scripts/setup.ts
+npx ctrl setup
 # re-init history
 rm -rf .git
 git init
