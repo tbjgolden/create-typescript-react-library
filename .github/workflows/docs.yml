@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
       - name: Setup Node
         uses: actions/setup-node@v1
@@ -28,13 +31,14 @@ jobs:
 
       - name: Commit files
         run: |
+          git pull
           git add docs/api
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -m "ci: Autogenerate API Docs"
 
       - name: Push changes
-        if: github.ref == 'refs/heads/main'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${'${{ secrets.GITHUB_TOKEN }}'}
+          branch: ${{ github.ref }}
