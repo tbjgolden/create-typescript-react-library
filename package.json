@@ -27,7 +27,8 @@
     "ctrl": "ctrl",
     "lint": "eslint . --ext .ts,.tsx",
     "start": "ctrl start",
-    "test": "concurrently \"yarn:lint\" \"yarn:build\" && concurrently \"jest --config ./config/jest/config.cjs.ts\" \"jest --config ./config/jest/config.es.ts\" \"jest --config ./config/jest/config.src.ts\" \"jest --config ./config/jest/config.umd.ts\""
+    "test": "concurrently \"yarn:lint\" \"yarn:build\" && concurrently \"jest --config ./config/jest/config.cjs.ts\" \"jest --config ./config/jest/config.es.ts\" \"jest --config ./config/jest/config.src.ts\" \"jest --config ./config/jest/config.umd.ts\"",
+    "watch": "jest --config ./config/jest/config.src.ts --coverage=false --watch"
   },
   "husky": {
     "hooks": {
