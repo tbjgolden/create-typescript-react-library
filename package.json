@@ -21,10 +21,10 @@
     "url": "https://github.com/xrdnwftmsmirdshgpfoyocjh/gocvmmeyaahgakggbjwmcmif.git"
   },
   "scripts": {
-    "build": "yarn run clean && yarn run compile && rollup -c ./config/rollup.config.js && del compiled",
+    "build": "yarn run clean && tsc -p tsconfig.build.json && rollup -c ./config/rollup.config.js && del compiled",
     "clean": "concurrently \"del compiled\" \"del coverage\" \"del dist\"",
-    "compile": "tsc -p tsconfig.build.json",
     "coverage": "jest --config ./config/jest/config.src.ts",
+    "ctrl": "ctrl",
     "lint": "eslint . --ext .ts,.tsx",
     "start": "ctrl start",
     "test": "concurrently \"yarn:lint\" \"yarn:build\" && concurrently \"jest --config ./config/jest/config.cjs.ts\" \"jest --config ./config/jest/config.es.ts\" \"jest --config ./config/jest/config.src.ts\" \"jest --config ./config/jest/config.umd.ts\""

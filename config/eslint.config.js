@@ -1,6 +1,6 @@
 let state = {}
 try {
-  state = require('./.state.json')
+  state = require('./state.json')
 } catch (err) {
   state = {}
 }

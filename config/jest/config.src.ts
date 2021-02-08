@@ -6,8 +6,8 @@ export default {
     '!src/**/*.test.{ts,tsx}',
     '!src/**/*.stories.{ts,tsx}'
   ],
-  coverageReporters: ['json-summary'],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
+  coverageReporters: ['text', 'json-summary'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   preset: 'ts-jest',
   rootDir: process.cwd(),
   roots: ['<rootDir>/src'],
