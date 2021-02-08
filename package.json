@@ -26,7 +26,7 @@
     "coverage": "jest --config ./config/jest/config.src.ts",
     "ctrl": "ctrl",
     "lint": "eslint . --ext .ts,.tsx",
-    "start": "ctrl start",
+    "start": "stmux -c line -w error -e ERROR -m beep,system -M -- [ \"yarn watch\" ]",
     "test": "concurrently \"yarn:lint\" \"yarn:build\" && concurrently \"jest --config ./config/jest/config.cjs.ts\" \"jest --config ./config/jest/config.es.ts\" \"jest --config ./config/jest/config.src.ts\" \"jest --config ./config/jest/config.umd.ts\"",
     "watch": "jest --config ./config/jest/config.src.ts --coverage=false --watch"
   },
@@ -91,6 +91,7 @@
     "rollup-plugin-terser": "7.0.2",
     "run-parallel": "^1.1.10",
     "semantic-release": "^17.3.7",
+    "stmux": "^1.8.1",
     "ts-jest": "26.4.4",
     "ts-loader": "^8.0.14",
     "ts-node": "^9.1.1",
