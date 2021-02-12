@@ -8,23 +8,23 @@
 
 ## Features
 
-- [x] rollup for smallest bundles
-- [x] tests with jest (+coverage)
+- [x] rollup for producing the smallest bundles
+- [x] tests and coverage with jest
+- [x] cute github readme badges (a.k.a. shields)
 - [x] generates type declarations
-- [x] esm, cjs and umd (script tag) exports
-- [x] admin (code of conduct, contributing instructions)
-- [x] interactive setup script
+- [x] set up by default to create esm, cjs and umd (script tag) exports
+- [x] includes license, code of conduct, contributing instructions
+- [x] very shiny interactive setup script
 - [x] automated semantic releases
 - [x] automated api docs generation
 - [x] add react with a single command
 - [x] context-dependent start script (tdd jest, plus storybook for react)
 
+And if there's a need you have that isn't included, leave an issue!
+
 ### Requirements
 
-- `curl`
-- `git`
-- `node`
-- `yarn`
+`curl` `git` `node` `yarn`
 
 ## Setup
 
@@ -34,54 +34,39 @@
 yarn create typescript-react-library <yourdir>
 cd <yourdir>
 
-# install dependencies
-yarn
-# start setup
-yarn ctrl setup
-# re-init history
-rm -rf .git
-git init
 # if adding react
 yarn ctrl add-react
-# create repo and push changes
-git add -A
-git commit -m 'Initial commit' --no-verify
-git remote add origin https://github.com/<user>/<repo>.git
-git push -u origin main
 ```
 
-### Step 2. Github setup
+### Step 2. Start developing!
+
+Scripts:
+
+- `yarn start` - Starts a dev friendly environment
+- `yarn test` - Turns your project into bundles and tests them
+- `yarn lint` - Checks your project for linting errors
+- `yarn coverage` - Checks your code coverage
+
+Also more via:
+
+- `yarn ctrl` - Used to run useful scripts via ctrl-scripts (ctrl is short for
+  create-typescript-react-library)
+
+### Step 3. Github setup
 
 1. Create an NPM token:
    https://docs.npmjs.com/creating-and-viewing-authentication-tokens
 2. Create a Github repo of the **same name** that you selected in the setup
    script
-3. Add the NPM token to your repository's secrets: your-repo > Settings >
+3. Add your NPM token to your repository's secrets: your-repo > Settings >
    Secrets > New Secret `NPM_TOKEN=<your token from Step 1>`
+4. Add, commit -m "feat: Initial release" and push your code
 
-### Step 3. Go!
-
-#### `yarn start`
+Your code will be published to npm. All future commits to the `main` branch will
+be handled by semantic-release.
 
 ---
 
-## I'm not creating a React library
-
-```sh
-yarn remove react react-dom
-```
-
-### Also, my library is for node, not the browser
-
-Remove the `browser` key in package.json.
-
-## Pointers
-
-- If you want to bundle a package you're importing, stick it in dependencies. If
-  you'd like the user of your library to install it as a peer dependency,
-  install it as a peer dependency
-  - Peer dependencies in web (umd) builds are imported by getting it from the
-    window object. Web versions of different dependencies often use different
-    global names (`window.$` might be used in `import ... from "jquery"`). For
-    web builds to work, you'll have to add the correct global name to the
-    knownDependencyNames map in rollup.config.js
+If you need to change the config to fit your use case - go for it! (Though do so
+after running any relevant ctrl-scripts, as they will mutate configs for you if
+you have not changed too much)
