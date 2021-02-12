@@ -1,6 +1,10 @@
 # `create-typescript-react-library`
 
-This starter enables simple creation of libraries using TypeScript.
+[![npm version](https://img.shields.io/npm/v/create-typescript-react-library.svg?style=flat-square)](https://www.npmjs.com/package/create-typescript-react-library)
+[![test coverage](https://img.shields.io/badge/dynamic/json?style=flat-square&color=brightgreen&label=coverage&query=%24.total.branches.pct&suffix=%25&url=https%3A%2F%2Funpkg.com%2Fcreate-typescript-react-library%2Fcoverage%2Fcoverage-summary.json)](https://www.npmjs.com/package/create-typescript-react-library)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tbjgolden/create-typescript-react-library/Release?style=flat-square)](https://github.com/tbjgolden/create-typescript-react-library/actions?query=workflow%3ARelease)
+
+> **This starter enables simple creation of libraries using TypeScript.**
 
 ## Features
 
@@ -17,25 +21,30 @@ This starter enables simple creation of libraries using TypeScript.
 
 ### Requirements
 
-- all of: `curl` `git` `node` `yarn`
-- one of: `sh` `bash` `zsh`
+- `curl`
+- `git`
+- `node`
+- `yarn`
 
 ## Setup
 
 ### Step 1. Local setup
 
 ```sh
-# clone
-git clone --depth 1 https://github.com/tbjgolden/create-typescript-react-library.git <yourdir>
+yarn create typescript-react-library <yourdir>
 cd <yourdir>
-# setup
+
+# install dependencies
 yarn
-npx ctrl setup
+# start setup
+yarn ctrl setup
 # re-init history
 rm -rf .git
 git init
-git add -A
+# if adding react
+yarn ctrl add-react
 # create repo and push changes
+git add -A
 git commit -m 'Initial commit' --no-verify
 git remote add origin https://github.com/<user>/<repo>.git
 git push -u origin main
@@ -54,13 +63,7 @@ git push -u origin main
 
 #### `yarn start`
 
-This will:
-
-1. run Storybook (if there are `src/**/*.stories.{ts,tsx}` files).
-2. run Jest in watch mode (if there are `src/**/*.test.{ts,tsx}` files)
-
-> Note: It will do nothing if no matching `.stories.` or `.test.` files are
-> found.
+---
 
 ## I'm not creating a React library
 
