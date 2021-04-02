@@ -1,9 +1,5 @@
 # `create-typescript-react-library`
 
-[![npm version](https://img.shields.io/npm/v/create-typescript-react-library.svg?style=flat-square)](https://www.npmjs.com/package/create-typescript-react-library)
-[![test coverage](https://img.shields.io/badge/dynamic/json?style=flat-square&color=brightgreen&label=coverage&query=%24.total.branches.pct&suffix=%25&url=https%3A%2F%2Funpkg.com%2Fcreate-typescript-react-library%2Fcoverage%2Fcoverage-summary.json)](https://www.npmjs.com/package/create-typescript-react-library)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/tbjgolden/create-typescript-react-library/Release?style=flat-square)](https://github.com/tbjgolden/create-typescript-react-library/actions?query=workflow%3ARelease)
-
 > **This starter enables simple creation of libraries using TypeScript.**
 
 ## Features
